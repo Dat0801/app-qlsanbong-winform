@@ -32,5 +32,12 @@ namespace QLSanBong.DAO
             }
             return ListSan;
         }
+
+        public int ThemSan(string tenSan, string maLoai)
+        {
+            string query = "SP_ThemSan @TenSan , @MaLoai";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { tenSan, maLoai });
+            return result;
+        } 
     }
 }

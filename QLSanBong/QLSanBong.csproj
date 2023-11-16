@@ -47,7 +47,9 @@
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\LoaiSanDAO.cs" />
     <Compile Include="DAO\SanDAO.cs" />
+    <Compile Include="DTO\LoaiSan.cs" />
     <Compile Include="DTO\San.cs" />
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>

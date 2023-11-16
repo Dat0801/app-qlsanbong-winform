@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace QLSanBong.DTO
 {
-    class San
+    class LoaiSan
     {
-        public int MaSan { get; set; }
-        public string TenSan { get; set; }
         public int MaLoai { get; set; }
-
-        public San(DataRow row)
+        public string TenLoai { get; set; }
+        public double GiaThue { get; set; }
+        public LoaiSan(DataRow row)
         {
-            this.MaSan = (int)row["MaSan"];
-            this.TenSan = row["TenSan"].ToString();
             this.MaLoai = (int)row["MaLoai"];
+            this.TenLoai = row["TenLoai"].ToString();
+            this.GiaThue = (double)row["GiaThue"];
         }
 
-        public San() { }
+        public LoaiSan() { }
     }
 }
