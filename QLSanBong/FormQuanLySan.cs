@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLSanBong.DAO;
+using QLSanBong.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +17,14 @@ namespace QLSanBong
         public FormQuanLySan()
         {
             InitializeComponent();
+            loadSan();
         }
 
-        
+        private void loadSan()
+        {
+            List<San> ListSan = SanDAO.Instance.LoadListSan();
+            dataGridView_San.DataSource = ListSan;
+        }
+
     }
 }
