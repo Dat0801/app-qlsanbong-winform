@@ -32,7 +32,7 @@ namespace QLSanBong
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQuanLySan));
             this.tab_QLLoaiSan = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_LoaiSan = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -50,6 +50,8 @@ namespace QLSanBong
             this.groupBox_DSSan = new System.Windows.Forms.GroupBox();
             this.dataGridView_San = new System.Windows.Forms.DataGridView();
             this.groupBox_ThongTinSan = new System.Windows.Forms.GroupBox();
+            this.txtMaSan = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btn_ThemSan = new System.Windows.Forms.Button();
             this.btn_SuaSan = new System.Windows.Forms.Button();
             this.btn_XoaSan = new System.Windows.Forms.Button();
@@ -65,7 +67,7 @@ namespace QLSanBong
             this.tab_QLSan = new System.Windows.Forms.TabControl();
             this.tab_QLLoaiSan.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LoaiSan)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -91,7 +93,7 @@ namespace QLSanBong
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView3);
+            this.groupBox1.Controls.Add(this.dataGridView_LoaiSan);
             this.groupBox1.Location = new System.Drawing.Point(23, 91);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(682, 615);
@@ -99,15 +101,17 @@ namespace QLSanBong
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách";
             // 
-            // dataGridView3
+            // dataGridView_LoaiSan
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 21);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(682, 594);
-            this.dataGridView3.TabIndex = 4;
+            this.dataGridView_LoaiSan.AllowUserToAddRows = false;
+            this.dataGridView_LoaiSan.AllowUserToDeleteRows = false;
+            this.dataGridView_LoaiSan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_LoaiSan.Location = new System.Drawing.Point(0, 21);
+            this.dataGridView_LoaiSan.Name = "dataGridView_LoaiSan";
+            this.dataGridView_LoaiSan.RowHeadersWidth = 51;
+            this.dataGridView_LoaiSan.RowTemplate.Height = 24;
+            this.dataGridView_LoaiSan.Size = new System.Drawing.Size(682, 594);
+            this.dataGridView_LoaiSan.TabIndex = 4;
             // 
             // groupBox2
             // 
@@ -269,6 +273,12 @@ namespace QLSanBong
             // 
             // dataGridView_San
             // 
+            this.dataGridView_San.AllowUserToAddRows = false;
+            this.dataGridView_San.AllowUserToDeleteRows = false;
+            this.dataGridView_San.AllowUserToOrderColumns = true;
+            this.dataGridView_San.AllowUserToResizeColumns = false;
+            this.dataGridView_San.AllowUserToResizeRows = false;
+            this.dataGridView_San.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_San.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_San.Location = new System.Drawing.Point(0, 21);
             this.dataGridView_San.Name = "dataGridView_San";
@@ -276,9 +286,12 @@ namespace QLSanBong
             this.dataGridView_San.RowTemplate.Height = 24;
             this.dataGridView_San.Size = new System.Drawing.Size(715, 594);
             this.dataGridView_San.TabIndex = 4;
+            this.dataGridView_San.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_San_CellClick);
             // 
             // groupBox_ThongTinSan
             // 
+            this.groupBox_ThongTinSan.Controls.Add(this.txtMaSan);
+            this.groupBox_ThongTinSan.Controls.Add(this.label3);
             this.groupBox_ThongTinSan.Controls.Add(this.btn_ThemSan);
             this.groupBox_ThongTinSan.Controls.Add(this.btn_SuaSan);
             this.groupBox_ThongTinSan.Controls.Add(this.btn_XoaSan);
@@ -294,6 +307,23 @@ namespace QLSanBong
             this.groupBox_ThongTinSan.TabStop = false;
             this.groupBox_ThongTinSan.Text = "Thông tin";
             // 
+            // txtMaSan
+            // 
+            this.txtMaSan.Location = new System.Drawing.Point(134, 218);
+            this.txtMaSan.Name = "txtMaSan";
+            this.txtMaSan.ReadOnly = true;
+            this.txtMaSan.Size = new System.Drawing.Size(261, 28);
+            this.txtMaSan.TabIndex = 51;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(53, 221);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 21);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Mã sân:";
+            // 
             // btn_ThemSan
             // 
             this.btn_ThemSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -305,6 +335,7 @@ namespace QLSanBong
             this.btn_ThemSan.Text = "Thêm";
             this.btn_ThemSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_ThemSan.UseVisualStyleBackColor = true;
+            this.btn_ThemSan.Click += new System.EventHandler(this.btn_ThemSan_Click);
             // 
             // btn_SuaSan
             // 
@@ -317,6 +348,7 @@ namespace QLSanBong
             this.btn_SuaSan.Text = "Sửa";
             this.btn_SuaSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SuaSan.UseVisualStyleBackColor = true;
+            this.btn_SuaSan.Click += new System.EventHandler(this.btn_SuaSan_Click);
             // 
             // btn_XoaSan
             // 
@@ -329,6 +361,7 @@ namespace QLSanBong
             this.btn_XoaSan.Text = "Xóa";
             this.btn_XoaSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_XoaSan.UseVisualStyleBackColor = true;
+            this.btn_XoaSan.Click += new System.EventHandler(this.btn_XoaSan_Click);
             // 
             // cbo_LoaiSan
             // 
@@ -396,6 +429,7 @@ namespace QLSanBong
             this.btn_TimKiemSan.Text = "Tìm kiếm";
             this.btn_TimKiemSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_TimKiemSan.UseVisualStyleBackColor = false;
+            this.btn_TimKiemSan.Click += new System.EventHandler(this.btn_TimKiemSan_Click);
             // 
             // txt_TimKiemTenSan
             // 
@@ -437,7 +471,7 @@ namespace QLSanBong
             this.Text = "FormQuanLySan";
             this.tab_QLLoaiSan.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LoaiSan)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -467,7 +501,7 @@ namespace QLSanBong
         private System.Windows.Forms.GroupBox groupBox_DSSan;
         private System.Windows.Forms.DataGridView dataGridView_San;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridView_LoaiSan;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -489,5 +523,7 @@ namespace QLSanBong
         private System.Windows.Forms.Button btn_XoaSan;
         private System.Windows.Forms.Button btn_TimKiemSan;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox txtMaSan;
+        private System.Windows.Forms.Label label3;
     }
 }
