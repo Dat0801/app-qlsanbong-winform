@@ -19,6 +19,9 @@ namespace QLSanBong.DAO
             private set { SanDAO.instance = value; }
         }
 
+        public static int SanWidth = 100;
+        public static int SanHeight = 100;
+
         private SanDAO() { }
 
         public List<San> LoadListSan()
@@ -54,7 +57,7 @@ namespace QLSanBong.DAO
             return result;
         }
 
-        public int SuaSan(int maSan, string tenSan, string maLoai)
+        public int SuaSan(int maSan, string tenSan, int maLoai)
         {
             string query = "SP_SuaSan @MaSan , @TenSan , @MaLoai";
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maSan, tenSan, maLoai });

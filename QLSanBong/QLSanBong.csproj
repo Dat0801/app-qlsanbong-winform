@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,8 +48,10 @@
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\LichDatSanDAO.cs" />
     <Compile Include="DAO\LoaiSanDAO.cs" />
     <Compile Include="DAO\SanDAO.cs" />
+    <Compile Include="DTO\LichDatSan.cs" />
     <Compile Include="DTO\LoaiSan.cs" />
     <Compile Include="DTO\San.cs" />
     <Compile Include="FormAdmin.cs">
@@ -166,6 +169,5 @@
   <ItemGroup>
     <None Include="Resources\pngtree-background-of-american-football-stadium-lighting-effect-picture-image_981574.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
