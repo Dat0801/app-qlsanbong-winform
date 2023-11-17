@@ -50,6 +50,8 @@ namespace QLSanBong
             this.groupBox_DSSan = new System.Windows.Forms.GroupBox();
             this.dataGridView_San = new System.Windows.Forms.DataGridView();
             this.groupBox_ThongTinSan = new System.Windows.Forms.GroupBox();
+            this.txtMaSan = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btn_ThemSan = new System.Windows.Forms.Button();
             this.btn_SuaSan = new System.Windows.Forms.Button();
             this.btn_XoaSan = new System.Windows.Forms.Button();
@@ -63,8 +65,6 @@ namespace QLSanBong
             this.txt_TimKiemTenSan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_QLSan = new System.Windows.Forms.TabControl();
-            this.txtMaSan = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.tab_QLLoaiSan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LoaiSan)).BeginInit();
@@ -276,6 +276,9 @@ namespace QLSanBong
             this.dataGridView_San.AllowUserToAddRows = false;
             this.dataGridView_San.AllowUserToDeleteRows = false;
             this.dataGridView_San.AllowUserToOrderColumns = true;
+            this.dataGridView_San.AllowUserToResizeColumns = false;
+            this.dataGridView_San.AllowUserToResizeRows = false;
+            this.dataGridView_San.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_San.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_San.Location = new System.Drawing.Point(0, 21);
             this.dataGridView_San.Name = "dataGridView_San";
@@ -304,6 +307,23 @@ namespace QLSanBong
             this.groupBox_ThongTinSan.TabStop = false;
             this.groupBox_ThongTinSan.Text = "Thông tin";
             // 
+            // txtMaSan
+            // 
+            this.txtMaSan.Location = new System.Drawing.Point(134, 218);
+            this.txtMaSan.Name = "txtMaSan";
+            this.txtMaSan.ReadOnly = true;
+            this.txtMaSan.Size = new System.Drawing.Size(261, 28);
+            this.txtMaSan.TabIndex = 51;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(53, 221);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 21);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Mã sân:";
+            // 
             // btn_ThemSan
             // 
             this.btn_ThemSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -328,6 +348,7 @@ namespace QLSanBong
             this.btn_SuaSan.Text = "Sửa";
             this.btn_SuaSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SuaSan.UseVisualStyleBackColor = true;
+            this.btn_SuaSan.Click += new System.EventHandler(this.btn_SuaSan_Click);
             // 
             // btn_XoaSan
             // 
@@ -408,6 +429,7 @@ namespace QLSanBong
             this.btn_TimKiemSan.Text = "Tìm kiếm";
             this.btn_TimKiemSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_TimKiemSan.UseVisualStyleBackColor = false;
+            this.btn_TimKiemSan.Click += new System.EventHandler(this.btn_TimKiemSan_Click);
             // 
             // txt_TimKiemTenSan
             // 
@@ -438,23 +460,6 @@ namespace QLSanBong
             this.tab_QLSan.SelectedIndex = 0;
             this.tab_QLSan.Size = new System.Drawing.Size(1256, 759);
             this.tab_QLSan.TabIndex = 0;
-            // 
-            // txtMaSan
-            // 
-            this.txtMaSan.Location = new System.Drawing.Point(134, 218);
-            this.txtMaSan.Name = "txtMaSan";
-            this.txtMaSan.ReadOnly = true;
-            this.txtMaSan.Size = new System.Drawing.Size(261, 28);
-            this.txtMaSan.TabIndex = 51;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 221);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 21);
-            this.label3.TabIndex = 50;
-            this.label3.Text = "Mã sân:";
             // 
             // FormQuanLySan
             // 

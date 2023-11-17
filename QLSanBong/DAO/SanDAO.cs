@@ -39,5 +39,39 @@ namespace QLSanBong.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { tenSan, maLoai });
             return result;
         } 
+
+        public bool KiemTraTrungTenSan(string tenSan)
+        {
+            string query = "SP_KiemTraTrungTenSan @TenSan";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { tenSan});
+            return result.Rows.Count > 0;
+        }
+
+        public int XoaSan(int maSan)
+        {
+            string query = "SP_XoaSan @MaSan";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maSan });
+            return result;
+        }
+
+        public int SuaSan(int maSan, string tenSan, string maLoai)
+        {
+            string query = "SP_SuaSan @MaSan , @TenSan , @MaLoai";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maSan, tenSan, maLoai });
+            return result;
+        }
+
+        public List<San> TimKiemSan(string tenSan)
+        {
+            List<San> ListSan = new List<San>();
+            string query = "SP_TimKiemSan @TenSan";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] {tenSan});
+            foreach (DataRow row in data.Rows)
+            {
+                San san = new San(row);
+                ListSan.Add(san);
+            }
+            return ListSan;
+        }
     }
 }
