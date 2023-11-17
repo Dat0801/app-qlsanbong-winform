@@ -46,7 +46,7 @@ CREATE TABLE LICHDATSAN
 	ThoiGianKT DATETIME NOT NULL,
 	MaKH INT NOT NULL,
 	MaSan INT NOT NULL,
-	ThanhTien INT DEFAULT 0,
+	ThanhTien FLOAT DEFAULT 0,
 	CONSTRAINT PK_LICHDATSAN PRIMARY KEY (MaLich),
 	CONSTRAINT FK_LICHDATSAN_KHACHHANG FOREIGN KEY (MaKH) REFERENCES KHACHHANG(MaKH),
 	CONSTRAINT FK_LICHDATSAN_SANBONG FOREIGN KEY (MaSan) REFERENCES SANBONG(MaSan)
@@ -56,7 +56,7 @@ CREATE TABLE HOADON
 (
 	MaHD INT IDENTITY(1,1) NOT NULL,
 	NgayTao DATETIME DEFAULT GETDATE(),
-	TongTien INT DEFAULT 0,
+	TongTien FLOAT DEFAULT 0,
 	MaLich INT NOT NULL,
 	MaKH INT NOT NULL,
 	CONSTRAINT PK_HOADON PRIMARY KEY (MaHD),
@@ -180,9 +180,9 @@ VALUES (N'Sân 5 Người', '100000'),
 (N'Sân 11 Người', '1000000')
 
 INSERT INTO SANBONG
-VALUES (N'Sân 1', 1),
-(N'Sân 2', 2),
-(N'Sân 3', 3)
+VALUES (N'Sân 5 - 1', 1),
+(N'Sân 7 - 1', 2),
+(N'Sân 11 - 1', 3)
 
 INSERT INTO KHACHHANG
 VALUES (N'Nguyễn Văn An', N'TP.HCM', '0399127841'),
@@ -221,6 +221,7 @@ VALUES(2, 2, 7)
 INSERT INTO CHITIETHD
 VALUES(3, 3, 11)
 
+-- Stored Procedures Login
 GO
 CREATE PROC SP_Login
 @username nvarchar(100), @password nvarchar(15)
@@ -230,6 +231,7 @@ BEGIN
 END
 GO
 
+-- Stored Procedures Quản lý sân
 GO
 CREATE PROC SP_GetListSan
 AS
@@ -286,10 +288,98 @@ BEGIN
 END
 GO
 
+-- Stored Procedures Quản lý loại sân
 GO
 CREATE PROC SP_GetListLoaiSan
 AS
 BEGIN
 	SELECT * FROM LOAISAN
+END
+GO
+
+GO
+CREATE PROC SP_KiemTraTrungTenLoai
+@TenLoai nvarchar(100)
+AS 
+BEGIN
+	SELECT * FROM LOAISAN WHERE TenLoai = @TenLoai
+END
+GO
+
+GO
+CREATE PROC SP_ThemLoaiSan
+@TenLoai nvarchar(100), @GiaThue float
+AS
+BEGIN
+	INSERT INTO LOAISAN
+	VALUES (@TenLoai, @GiaThue)
+END
+GO
+
+GO
+CREATE PROC SP_XoaLoaiSan 
+@MaLoai int
+AS
+BEGIN
+	DELETE FROM LOAISAN WHERE Maloai = @MaLoai
+END
+GO
+
+GO
+CREATE PROC SP_SuaLoaiSan
+@MaLoai int, @TenLoai nvarchar(100), @GiaThue float
+AS
+BEGIN
+	UPDATE LOAISAN
+	SET TenLoai = @TenLoai, GiaThue = @GiaThue
+	WHERE LOAISAN.MaLoai = @MaLoai
+END
+GO
+
+GO
+CREATE PROC SP_TimKiemLoaiSan
+@TenLoai nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM LOAISAN WHERE TenLoai LIKE '%' + @TenLoai + '%'
+END
+GO
+
+-- Stored Procedures Quản lý lịch đặt sân
+GO
+CREATE PROC SP_GetListLichDatSan
+AS
+BEGIN
+	SELECT * FROM LICHDATSAN
+END
+GO
+
+GO
+CREATE PROC SP_ThemLichDatSan
+@ThoiGianBD DateTime, @ThoiGianKT DateTime, @MaKH int, @MaSan int
+AS
+BEGIN
+	INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
+	VALUES (@ThoiGianBD, @ThoiGianKT, @MaKH, @MaSan)
+END
+GO
+
+GO
+CREATE PROC SP_XoaLichDatSan
+@MaLich int
+AS
+BEGIN
+	DELETE FROM LICHDATSAN WHERE MaLich = @MaLich
+END
+GO
+
+GO
+CREATE PROC SP_SuaLichDatSan
+@MaLich int, @ThoiGianBD DateTime, @ThoiGianKT DateTime, @MaKH int, @MaSan int
+AS
+BEGIN
+	UPDATE LICHDATSAN
+	SET ThoiGianBD = @ThoiGianBD, ThoiGianKT = @ThoiGianKT, MaKH = @MaKH, MaSan = @MaSan
+	WHERE MaLich = @MaLich
 END
 GO

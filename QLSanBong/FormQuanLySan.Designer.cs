@@ -34,17 +34,17 @@ namespace QLSanBong
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView_LoaiSan = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnThemLoaiSan = new System.Windows.Forms.Button();
+            this.btnSuaLoaiSan = new System.Windows.Forms.Button();
+            this.btnXoaLoaiSan = new System.Windows.Forms.Button();
+            this.txtGiaThue = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTenLoai = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnTimKiemLoaiSan = new System.Windows.Forms.Button();
+            this.txtTimKiemLoaiSan = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox_DSSan = new System.Windows.Forms.GroupBox();
@@ -65,6 +65,8 @@ namespace QLSanBong
             this.txt_TimKiemTenSan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_QLSan = new System.Windows.Forms.TabControl();
+            this.txtMaLoai = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tab_QLLoaiSan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LoaiSan)).BeginInit();
@@ -105,6 +107,9 @@ namespace QLSanBong
             // 
             this.dataGridView_LoaiSan.AllowUserToAddRows = false;
             this.dataGridView_LoaiSan.AllowUserToDeleteRows = false;
+            this.dataGridView_LoaiSan.AllowUserToResizeColumns = false;
+            this.dataGridView_LoaiSan.AllowUserToResizeRows = false;
+            this.dataGridView_LoaiSan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_LoaiSan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_LoaiSan.Location = new System.Drawing.Point(0, 21);
             this.dataGridView_LoaiSan.Name = "dataGridView_LoaiSan";
@@ -112,15 +117,18 @@ namespace QLSanBong
             this.dataGridView_LoaiSan.RowTemplate.Height = 24;
             this.dataGridView_LoaiSan.Size = new System.Drawing.Size(682, 594);
             this.dataGridView_LoaiSan.TabIndex = 4;
+            this.dataGridView_LoaiSan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_LoaiSan_CellClick);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnThem);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtMaLoai);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.btnThemLoaiSan);
+            this.groupBox2.Controls.Add(this.btnSuaLoaiSan);
+            this.groupBox2.Controls.Add(this.btnXoaLoaiSan);
+            this.groupBox2.Controls.Add(this.txtGiaThue);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.txtTenLoai);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(722, 20);
@@ -130,48 +138,51 @@ namespace QLSanBong
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin";
             // 
-            // btnThem
+            // btnThemLoaiSan
             // 
-            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            this.btnThem.Location = new System.Drawing.Point(23, 419);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(134, 69);
-            this.btnThem.TabIndex = 49;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThemLoaiSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemLoaiSan.Image = ((System.Drawing.Image)(resources.GetObject("btnThemLoaiSan.Image")));
+            this.btnThemLoaiSan.Location = new System.Drawing.Point(23, 419);
+            this.btnThemLoaiSan.Name = "btnThemLoaiSan";
+            this.btnThemLoaiSan.Size = new System.Drawing.Size(134, 69);
+            this.btnThemLoaiSan.TabIndex = 49;
+            this.btnThemLoaiSan.Text = "Thêm";
+            this.btnThemLoaiSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThemLoaiSan.UseVisualStyleBackColor = true;
+            this.btnThemLoaiSan.Click += new System.EventHandler(this.btnThemLoaiSan_Click);
             // 
-            // button4
+            // btnSuaLoaiSan
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(343, 419);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(134, 69);
-            this.button4.TabIndex = 48;
-            this.button4.Text = "Sửa";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSuaLoaiSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuaLoaiSan.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaLoaiSan.Image")));
+            this.btnSuaLoaiSan.Location = new System.Drawing.Point(343, 419);
+            this.btnSuaLoaiSan.Name = "btnSuaLoaiSan";
+            this.btnSuaLoaiSan.Size = new System.Drawing.Size(134, 69);
+            this.btnSuaLoaiSan.TabIndex = 48;
+            this.btnSuaLoaiSan.Text = "Sửa";
+            this.btnSuaLoaiSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSuaLoaiSan.UseVisualStyleBackColor = true;
+            this.btnSuaLoaiSan.Click += new System.EventHandler(this.btnSuaLoaiSan_Click);
             // 
-            // button5
+            // btnXoaLoaiSan
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(181, 419);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(134, 69);
-            this.button5.TabIndex = 47;
-            this.button5.Text = "Xóa";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnXoaLoaiSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaLoaiSan.Image = ((System.Drawing.Image)(resources.GetObject("btnXoaLoaiSan.Image")));
+            this.btnXoaLoaiSan.Location = new System.Drawing.Point(181, 419);
+            this.btnXoaLoaiSan.Name = "btnXoaLoaiSan";
+            this.btnXoaLoaiSan.Size = new System.Drawing.Size(134, 69);
+            this.btnXoaLoaiSan.TabIndex = 47;
+            this.btnXoaLoaiSan.Text = "Xóa";
+            this.btnXoaLoaiSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXoaLoaiSan.UseVisualStyleBackColor = true;
+            this.btnXoaLoaiSan.Click += new System.EventHandler(this.btnXoaLoaiSan_Click);
             // 
-            // textBox2
+            // txtGiaThue
             // 
-            this.textBox2.Location = new System.Drawing.Point(169, 329);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(261, 28);
-            this.textBox2.TabIndex = 40;
+            this.txtGiaThue.Location = new System.Drawing.Point(169, 329);
+            this.txtGiaThue.Name = "txtGiaThue";
+            this.txtGiaThue.Size = new System.Drawing.Size(261, 28);
+            this.txtGiaThue.TabIndex = 40;
             // 
             // label2
             // 
@@ -182,12 +193,12 @@ namespace QLSanBong
             this.label2.TabIndex = 39;
             this.label2.Text = "Giá thuê";
             // 
-            // textBox4
+            // txtTenLoai
             // 
-            this.textBox4.Location = new System.Drawing.Point(169, 268);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(261, 28);
-            this.textBox4.TabIndex = 38;
+            this.txtTenLoai.Location = new System.Drawing.Point(169, 268);
+            this.txtTenLoai.Name = "txtTenLoai";
+            this.txtTenLoai.Size = new System.Drawing.Size(261, 28);
+            this.txtTenLoai.TabIndex = 38;
             // 
             // label4
             // 
@@ -209,8 +220,8 @@ namespace QLSanBong
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.button6);
-            this.groupBox5.Controls.Add(this.textBox6);
+            this.groupBox5.Controls.Add(this.btnTimKiemLoaiSan);
+            this.groupBox5.Controls.Add(this.txtTimKiemLoaiSan);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Location = new System.Drawing.Point(23, 20);
             this.groupBox5.Name = "groupBox5";
@@ -219,25 +230,26 @@ namespace QLSanBong
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Tìm kiếm";
             // 
-            // button6
+            // btnTimKiemLoaiSan
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(455, 11);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(187, 54);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Tìm kiếm";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnTimKiemLoaiSan.BackColor = System.Drawing.Color.White;
+            this.btnTimKiemLoaiSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiemLoaiSan.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiemLoaiSan.Image")));
+            this.btnTimKiemLoaiSan.Location = new System.Drawing.Point(455, 11);
+            this.btnTimKiemLoaiSan.Name = "btnTimKiemLoaiSan";
+            this.btnTimKiemLoaiSan.Size = new System.Drawing.Size(187, 54);
+            this.btnTimKiemLoaiSan.TabIndex = 15;
+            this.btnTimKiemLoaiSan.Text = "Tìm kiếm";
+            this.btnTimKiemLoaiSan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTimKiemLoaiSan.UseVisualStyleBackColor = false;
+            this.btnTimKiemLoaiSan.Click += new System.EventHandler(this.btnTimKiemLoaiSan_Click);
             // 
-            // textBox6
+            // txtTimKiemLoaiSan
             // 
-            this.textBox6.Location = new System.Drawing.Point(202, 25);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(215, 28);
-            this.textBox6.TabIndex = 1;
+            this.txtTimKiemLoaiSan.Location = new System.Drawing.Point(202, 25);
+            this.txtTimKiemLoaiSan.Name = "txtTimKiemLoaiSan";
+            this.txtTimKiemLoaiSan.Size = new System.Drawing.Size(215, 28);
+            this.txtTimKiemLoaiSan.TabIndex = 1;
             // 
             // label13
             // 
@@ -461,6 +473,23 @@ namespace QLSanBong
             this.tab_QLSan.Size = new System.Drawing.Size(1256, 759);
             this.tab_QLSan.TabIndex = 0;
             // 
+            // txtMaLoai
+            // 
+            this.txtMaLoai.Location = new System.Drawing.Point(169, 202);
+            this.txtMaLoai.Name = "txtMaLoai";
+            this.txtMaLoai.ReadOnly = true;
+            this.txtMaLoai.Size = new System.Drawing.Size(261, 28);
+            this.txtMaLoai.TabIndex = 51;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(88, 205);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 26);
+            this.label5.TabIndex = 50;
+            this.label5.Text = "Mã loại:";
+            // 
             // FormQuanLySan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -505,25 +534,27 @@ namespace QLSanBong
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtTimKiemLoaiSan;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtGiaThue;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTenLoai;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbo_LoaiSan;
         private System.Windows.Forms.TextBox txtTenSan;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnThemLoaiSan;
+        private System.Windows.Forms.Button btnSuaLoaiSan;
+        private System.Windows.Forms.Button btnXoaLoaiSan;
         private System.Windows.Forms.Button btn_ThemSan;
         private System.Windows.Forms.Button btn_SuaSan;
         private System.Windows.Forms.Button btn_XoaSan;
         private System.Windows.Forms.Button btn_TimKiemSan;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnTimKiemLoaiSan;
         private System.Windows.Forms.TextBox txtMaSan;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMaLoai;
+        private System.Windows.Forms.Label label5;
     }
 }

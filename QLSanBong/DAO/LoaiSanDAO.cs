@@ -32,5 +32,46 @@ namespace QLSanBong.DAO
             }
             return ListSan;
         }
+
+        public int ThemLoaiSan(string tenLoai, double giaThue)
+        {
+            string query = "SP_ThemLoaiSan @TenLoai , @GiaThue";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { tenLoai, giaThue });
+            return result;
+        }
+
+        public bool KiemTraTrungTenLoai(string tenLoai)
+        {
+            string query = "SP_KiemTraTrungTenLoai @TenLoai";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { tenLoai });
+            return result.Rows.Count > 0;
+        }
+
+        public int XoaLoaiSan(int maLoai)
+        {
+            string query = "SP_XoaLoaiSan @MaLoai";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maLoai });
+            return result;
+        }
+
+        public int SuaLoaiSan(int maLoai, string tenLoai, double giaThue)
+        {
+            string query = "SP_SuaLoaiSan @MaLoai , @TenLoai , @GiaThue";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maLoai, tenLoai, giaThue });
+            return result;
+        }
+
+        public List<LoaiSan> TimKiemLoaiSan(string tenLoai)
+        {
+            List<LoaiSan> ListLoaiSan = new List<LoaiSan>();
+            string query = "SP_TimKiemLoaiSan @TenLoai";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { tenLoai });
+            foreach (DataRow row in data.Rows)
+            {
+                LoaiSan loaiSan = new LoaiSan(row);
+                ListLoaiSan.Add(loaiSan);
+            }
+            return ListLoaiSan;
+        }
     }
 }
