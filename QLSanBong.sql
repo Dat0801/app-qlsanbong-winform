@@ -33,7 +33,7 @@ CREATE TABLE SANBONG
 CREATE TABLE KHACHHANG
 (
 	MaKH INT IDENTITY(1,1) NOT NULL,
-	TenKH NVARCHAR(50) NOT NULL,
+	TenKH NVARCHAR(100) NOT NULL,
 	DiaChi NVARCHAR(50) DEFAULT N'Chưa xác định',
 	SDT VARCHAR(10) NOT NULL,
 	CONSTRAINT PK_KHACHHANG PRIMARY KEY (MaKH)
@@ -82,7 +82,7 @@ CREATE TABLE CHITIETHD
 	CONSTRAINT PK_CHITIETHD_DICHVU FOREIGN KEY (MaDV) REFERENCES DICHVU(MaDV)
 )
 
--- cập nhật lại thành tiền của sân khi thay đổi giá thuê của loại sân
+-- cập nhật lại thành tiền của lịch đặt sân khi thay đổi giá thuê của loại sân
 GO
 CREATE TRIGGER UpdateTotalLoaiSan
 ON LOAISAN
@@ -100,7 +100,7 @@ BEGIN
 END
 GO
 
--- cập nhật thành tiền của sân khi đặt và Cập nhật tổng tiền hóa đơn khi thêm lịch đặt sân
+-- cập nhật thành tiền của lịch đặt sân khi đặt
 GO
 CREATE TRIGGER UpdateTotalLichDatSan
 ON LICHDATSAN
@@ -120,6 +120,7 @@ BEGIN
 END
 GO
 
+--Cập nhật tổng tiền hóa đơn khi thêm lịch đặt sân
 GO
 CREATE TRIGGER UpdateTotalHoaDon
 ON HOADON
@@ -134,6 +135,7 @@ BEGIN
 END
 GO
 
+-- Cập nhật tổng tiền của hóa đơn khi thay đổi giá của dịch vụ
 GO
 CREATE TRIGGER UpdateTotalDichVu
 ON DICHVU
@@ -152,6 +154,7 @@ BEGIN
 END
 GO
 
+-- Cập nhật tổng tiền của hóa đơn khi thay đổi số lượng trong chi tiết hóa đơn
 GO
 CREATE TRIGGER UpdateTotalChiTietHD
 ON CHITIETHD
@@ -172,31 +175,56 @@ GO
 
 INSERT INTO ACCOUNT
 VALUES ('admin1', '123456', N'Đạt', 1),
-('nhanvien1', '1122', N'Tài', 0)
+('admin2', 'admin123', N'Tài', 1),
+('admin3', 'admin123456', N'Tú', 1),
+('nhanvien1', 'nhanvien123', N'Bảo', 0),
+('nhanvien2', 'nhanvien123456', N'Trí', 0)
 
 INSERT INTO LOAISAN
 VALUES (N'Sân 5 Người', '100000'),
 (N'Sân 7 Người', '300000'),
+(N'Sân 9 Người', '500000'),
 (N'Sân 11 Người', '1000000')
 
 INSERT INTO SANBONG
 VALUES (N'Sân 5 - 1', 1),
+(N'Sân 5 - 2', 1),
+(N'Sân 5 - 3', 1),
 (N'Sân 7 - 1', 2),
-(N'Sân 11 - 1', 3)
+(N'Sân 7 - 2', 2),
+(N'Sân 7 - 3', 2),
+(N'Sân 9 - 1', 3),
+(N'Sân 9 - 2', 3),
+(N'Sân 9 - 3', 3),
+(N'Sân 11 - 1', 4),
+(N'Sân 11 - 2', 4),
+(N'Sân 11 - 3', 4)
 
 INSERT INTO KHACHHANG
-VALUES (N'Nguyễn Văn An', N'TP.HCM', '0399127841'),
-(N'Trần Văn Khánh', N'TP.HCM', '0399127841'),
-(N'Bùi Văn Hùng', N'TP.HCM', '0399127841')
+VALUES (N'Nguyễn Văn An', N'Quận 1 TP.HCM', '0399127841'),
+(N'Trần Văn Khánh', N'Quận Bình Tân TP.HCM', '0392127321'),
+(N'Bùi Văn Hùng', N'Quận Bình Thạnh TP.HCM', '0982127612'),
+(N'Nguyễn Trường Giang', N'Quận 2 TP.HCM', '0219127513'),
+(N'Đinh Văn Quế', N'Quận 3 TP.HCM', '0339127333'),
+(N'Bùi Văn Bường', N'Quận 4 TP.HCM', '0333127666')
 
 INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
 VALUES ('11-20-2023 16:00', '11-20-2023 18:00', 1, 1)
 
 INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
-VALUES('11-20-2023 15:30', '11-20-2023 18:00', 2, 2)
+VALUES('11-20-2023 15:30', '11-20-2023 18:00', 2, 4)
 
 INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
-VALUES('11-20-2023 15:00', '11-20-2023 17:00', 3, 3)
+VALUES('11-20-2023 15:00', '11-20-2023 17:00', 3, 8)
+
+INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
+VALUES('11-18-2023 14:00', '11-18-2023 17:00', 4, 1)
+
+INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
+VALUES('11-17-2023 13:00', '11-17-2023 18:00', 5, 2)
+
+INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
+VALUES('11-20-2023 15:00', '11-20-2023 17:00', 6, 11)
 
 INSERT INTO HOADON (MALICH, MAKH)
 VALUES (1,1)
@@ -207,10 +235,22 @@ VALUES(2,2)
 INSERT INTO HOADON (MALICH, MAKH)
 VALUES(3,3)
 
+INSERT INTO HOADON (MALICH, MAKH)
+VALUES(4,4)
+
+INSERT INTO HOADON (MALICH, MAKH)
+VALUES(5,5)
+
+INSERT INTO HOADON (MALICH, MAKH)
+VALUES(6,6)
+
 INSERT INTO DICHVU
 VALUES (N'Nước uống Sting', 10000),
 (N'Nước uống Olong', 10000),
-(N'Mì xào', 30000)
+(N'Mì xào', 30000),
+(N'Cơm gà xối mỡ', 30000),
+(N'Cơm tấm', 30000),
+(N'Hủ tiếu', 30000)
 
 INSERT INTO CHITIETHD
 VALUES (1, 1, 5)

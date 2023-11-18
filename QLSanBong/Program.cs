@@ -17,7 +17,7 @@ namespace QLSanBong
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDatSan());
+            Application.Run(new fLogin());
         }
     }
 }
