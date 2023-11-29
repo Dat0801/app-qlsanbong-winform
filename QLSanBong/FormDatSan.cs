@@ -106,5 +106,10 @@ namespace QLSanBong
             LichDatSanDAO.Instance.ThemLichDatSan(thoiGianBD, thoiGianKT, maKH, maSan);
             loadLichDatSan();
         }
+
+        private void FormDatSan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

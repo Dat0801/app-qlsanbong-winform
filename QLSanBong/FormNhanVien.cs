@@ -46,5 +46,20 @@ namespace QLSanBong
             if (currentFormChild != null)
                 currentFormChild.Close();
         }
+
+        private void btn_DangXuat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FormNhanVien_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult r;
+            r = MessageBox.Show("Bạn có muốn thoát?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (r == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

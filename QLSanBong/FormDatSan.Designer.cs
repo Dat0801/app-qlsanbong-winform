@@ -32,6 +32,8 @@ namespace QLSanBong
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_DatSan = new System.Windows.Forms.TabPage();
             this.groupBoxDatSan = new System.Windows.Forms.GroupBox();
+            this.txtMaLich = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.flpSan = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_TraSan = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
@@ -48,8 +50,6 @@ namespace QLSanBong
             this.label9 = new System.Windows.Forms.Label();
             this.lblMaSan = new System.Windows.Forms.Label();
             this.dataGridView_LichDatSan = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtMaLich = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage_DatSan.SuspendLayout();
             this.groupBoxDatSan.SuspendLayout();
@@ -106,6 +106,25 @@ namespace QLSanBong
             this.groupBoxDatSan.TabIndex = 3;
             this.groupBoxDatSan.TabStop = false;
             this.groupBoxDatSan.Text = "Thông tin";
+            // 
+            // txtMaLich
+            // 
+            this.txtMaLich.Enabled = false;
+            this.txtMaLich.Location = new System.Drawing.Point(199, 24);
+            this.txtMaLich.Name = "txtMaLich";
+            this.txtMaLich.ReadOnly = true;
+            this.txtMaLich.Size = new System.Drawing.Size(298, 28);
+            this.txtMaLich.TabIndex = 52;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(39, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 21);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Mã lịch:";
             // 
             // flpSan
             // 
@@ -267,32 +286,15 @@ namespace QLSanBong
             this.dataGridView_LichDatSan.TabIndex = 18;
             this.dataGridView_LichDatSan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_LichDatSan_CellClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 26);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "Mã lịch:";
-            // 
-            // txtMaLich
-            // 
-            this.txtMaLich.Enabled = false;
-            this.txtMaLich.Location = new System.Drawing.Point(199, 24);
-            this.txtMaLich.Name = "txtMaLich";
-            this.txtMaLich.ReadOnly = true;
-            this.txtMaLich.Size = new System.Drawing.Size(298, 28);
-            this.txtMaLich.TabIndex = 52;
-            // 
             // FormDatSan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1392, 833);
             this.Controls.Add(this.tabControl1);
             this.Name = "FormDatSan";
+            this.Load += new System.EventHandler(this.FormDatSan_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage_DatSan.ResumeLayout(false);
             this.groupBoxDatSan.ResumeLayout(false);

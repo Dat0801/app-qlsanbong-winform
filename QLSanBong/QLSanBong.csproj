@@ -48,9 +48,11 @@
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\LichDatSanDAO.cs" />
     <Compile Include="DAO\LoaiSanDAO.cs" />
     <Compile Include="DAO\SanDAO.cs" />
+    <Compile Include="DTO\KhachHang.cs" />
     <Compile Include="DTO\LichDatSan.cs" />
     <Compile Include="DTO\LoaiSan.cs" />
     <Compile Include="DTO\San.cs" />
@@ -168,6 +170,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pngtree-background-of-american-football-stadium-lighting-effect-picture-image_981574.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings-3-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Soccer-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\football-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soccer-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dollar-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
