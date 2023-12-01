@@ -29,11 +29,14 @@ namespace QLSanBong
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQuanLySan));
             this.tab_QLLoaiSan = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView_LoaiSan = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtMaLoai = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnThemLoaiSan = new System.Windows.Forms.Button();
             this.btnSuaLoaiSan = new System.Windows.Forms.Button();
             this.btnXoaLoaiSan = new System.Windows.Forms.Button();
@@ -65,8 +68,8 @@ namespace QLSanBong
             this.txt_TimKiemTenSan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_QLSan = new System.Windows.Forms.TabControl();
-            this.txtMaLoai = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.contextMenuStrip_QuanLySan = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tab_QLLoaiSan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LoaiSan)).BeginInit();
@@ -78,6 +81,7 @@ namespace QLSanBong
             this.groupBox_ThongTinSan.SuspendLayout();
             this.groupBox_TimKiemSan.SuspendLayout();
             this.tab_QLSan.SuspendLayout();
+            this.contextMenuStrip_QuanLySan.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab_QLLoaiSan
@@ -111,6 +115,7 @@ namespace QLSanBong
             this.dataGridView_LoaiSan.AllowUserToResizeRows = false;
             this.dataGridView_LoaiSan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_LoaiSan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_LoaiSan.ContextMenuStrip = this.contextMenuStrip_QuanLySan;
             this.dataGridView_LoaiSan.Location = new System.Drawing.Point(0, 21);
             this.dataGridView_LoaiSan.Name = "dataGridView_LoaiSan";
             this.dataGridView_LoaiSan.RowHeadersWidth = 51;
@@ -137,6 +142,23 @@ namespace QLSanBong
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin";
+            // 
+            // txtMaLoai
+            // 
+            this.txtMaLoai.Location = new System.Drawing.Point(169, 202);
+            this.txtMaLoai.Name = "txtMaLoai";
+            this.txtMaLoai.ReadOnly = true;
+            this.txtMaLoai.Size = new System.Drawing.Size(261, 28);
+            this.txtMaLoai.TabIndex = 51;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(88, 205);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 21);
+            this.label5.TabIndex = 50;
+            this.label5.Text = "Mã loại:";
             // 
             // btnThemLoaiSan
             // 
@@ -292,6 +314,7 @@ namespace QLSanBong
             this.dataGridView_San.AllowUserToResizeRows = false;
             this.dataGridView_San.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_San.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_San.ContextMenuStrip = this.contextMenuStrip_QuanLySan;
             this.dataGridView_San.Location = new System.Drawing.Point(0, 21);
             this.dataGridView_San.Name = "dataGridView_San";
             this.dataGridView_San.RowHeadersWidth = 51;
@@ -473,22 +496,20 @@ namespace QLSanBong
             this.tab_QLSan.Size = new System.Drawing.Size(1256, 759);
             this.tab_QLSan.TabIndex = 0;
             // 
-            // txtMaLoai
+            // contextMenuStrip_QuanLySan
             // 
-            this.txtMaLoai.Location = new System.Drawing.Point(169, 202);
-            this.txtMaLoai.Name = "txtMaLoai";
-            this.txtMaLoai.ReadOnly = true;
-            this.txtMaLoai.Size = new System.Drawing.Size(261, 28);
-            this.txtMaLoai.TabIndex = 51;
+            this.contextMenuStrip_QuanLySan.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip_QuanLySan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip_QuanLySan.Name = "contextMenuStrip_QuanLySan";
+            this.contextMenuStrip_QuanLySan.Size = new System.Drawing.Size(211, 56);
             // 
-            // label5
+            // xóaToolStripMenuItem
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 205);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 26);
-            this.label5.TabIndex = 50;
-            this.label5.Text = "Mã loại:";
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // FormQuanLySan
             // 
@@ -513,6 +534,7 @@ namespace QLSanBong
             this.groupBox_TimKiemSan.ResumeLayout(false);
             this.groupBox_TimKiemSan.PerformLayout();
             this.tab_QLSan.ResumeLayout(false);
+            this.contextMenuStrip_QuanLySan.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -556,5 +578,7 @@ namespace QLSanBong
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMaLoai;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_QuanLySan;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
     }
 }

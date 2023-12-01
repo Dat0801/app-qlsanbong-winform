@@ -81,7 +81,7 @@ namespace QLSanBong
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tab_QLKH = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_DSKH = new System.Windows.Forms.DataGridView();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txt_SDT = new System.Windows.Forms.TextBox();
             this.txt_DiaChi = new System.Windows.Forms.TextBox();
@@ -89,8 +89,8 @@ namespace QLSanBong
             this.lb_DiaChi = new System.Windows.Forms.Label();
             this.lb_TenKH = new System.Windows.Forms.Label();
             this.txt_TenKH = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnThemKH = new System.Windows.Forms.Button();
+            this.btnSuaKH = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
@@ -112,7 +112,7 @@ namespace QLSanBong
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tab_QLKH.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_DSKH)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.SuspendLayout();
@@ -674,7 +674,7 @@ namespace QLSanBong
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.dataGridView4);
+            this.groupBox7.Controls.Add(this.dataGridView_DSKH);
             this.groupBox7.Location = new System.Drawing.Point(25, 91);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(682, 615);
@@ -682,15 +682,15 @@ namespace QLSanBong
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Danh sách";
             // 
-            // dataGridView4
+            // dataGridView_DSKH
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(0, 21);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.RowHeadersWidth = 51;
-            this.dataGridView4.RowTemplate.Height = 24;
-            this.dataGridView4.Size = new System.Drawing.Size(682, 594);
-            this.dataGridView4.TabIndex = 4;
+            this.dataGridView_DSKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_DSKH.Location = new System.Drawing.Point(0, 21);
+            this.dataGridView_DSKH.Name = "dataGridView_DSKH";
+            this.dataGridView_DSKH.RowHeadersWidth = 51;
+            this.dataGridView_DSKH.RowTemplate.Height = 24;
+            this.dataGridView_DSKH.Size = new System.Drawing.Size(682, 594);
+            this.dataGridView_DSKH.TabIndex = 4;
             // 
             // groupBox8
             // 
@@ -700,8 +700,8 @@ namespace QLSanBong
             this.groupBox8.Controls.Add(this.lb_DiaChi);
             this.groupBox8.Controls.Add(this.lb_TenKH);
             this.groupBox8.Controls.Add(this.txt_TenKH);
-            this.groupBox8.Controls.Add(this.button5);
-            this.groupBox8.Controls.Add(this.button6);
+            this.groupBox8.Controls.Add(this.btnThemKH);
+            this.groupBox8.Controls.Add(this.btnSuaKH);
             this.groupBox8.Controls.Add(this.groupBox9);
             this.groupBox8.Location = new System.Drawing.Point(724, 20);
             this.groupBox8.Name = "groupBox8";
@@ -764,29 +764,29 @@ namespace QLSanBong
             this.txt_TenKH.Size = new System.Drawing.Size(210, 28);
             this.txt_TenKH.TabIndex = 56;
             // 
-            // button5
+            // btnThemKH
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(79, 408);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(134, 69);
-            this.button5.TabIndex = 46;
-            this.button5.Text = "Thêm";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnThemKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemKH.Image = ((System.Drawing.Image)(resources.GetObject("btnThemKH.Image")));
+            this.btnThemKH.Location = new System.Drawing.Point(79, 408);
+            this.btnThemKH.Name = "btnThemKH";
+            this.btnThemKH.Size = new System.Drawing.Size(134, 69);
+            this.btnThemKH.TabIndex = 46;
+            this.btnThemKH.Text = "Thêm";
+            this.btnThemKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThemKH.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnSuaKH
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(298, 408);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(134, 69);
-            this.button6.TabIndex = 45;
-            this.button6.Text = "Sửa";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnSuaKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuaKH.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaKH.Image")));
+            this.btnSuaKH.Location = new System.Drawing.Point(298, 408);
+            this.btnSuaKH.Name = "btnSuaKH";
+            this.btnSuaKH.Size = new System.Drawing.Size(134, 69);
+            this.btnSuaKH.TabIndex = 45;
+            this.btnSuaKH.Text = "Sửa";
+            this.btnSuaKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSuaKH.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -869,7 +869,7 @@ namespace QLSanBong
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tab_QLKH.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_DSKH)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -930,10 +930,10 @@ namespace QLSanBong
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TabPage tab_QLKH;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView dataGridView_DSKH;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnThemKH;
+        private System.Windows.Forms.Button btnSuaKH;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox textBox5;

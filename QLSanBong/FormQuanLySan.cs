@@ -30,14 +30,20 @@ namespace QLSanBong
         private void btn_ThemSan_Click(object sender, EventArgs e)
         {
             string tenSan = txtTenSan.Text;
-            string maLoai = cbo_LoaiSan.SelectedValue.ToString();
-            if (KiemTraTrungTenSan(tenSan))
-                MessageBox.Show("Tên sân đã tồn tại!");
-            else
-                SanDAO.Instance.ThemSan(tenSan, maLoai);
-            txtMaSan.Clear();
-            txtTenSan.Clear();
-            cbo_LoaiSan.SelectedIndex = 0;
+            if(tenSan == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên sân!");
+            } else
+            {
+                string maLoai = cbo_LoaiSan.SelectedValue.ToString();
+                if (KiemTraTrungTenSan(tenSan))
+                    MessageBox.Show("Tên sân đã tồn tại!");
+                else
+                    SanDAO.Instance.ThemSan(tenSan, maLoai);
+                txtMaSan.Clear();
+                txtTenSan.Clear();
+                cbo_LoaiSan.SelectedIndex = 0;
+            }
             loadSan();
         }
 
@@ -67,20 +73,42 @@ namespace QLSanBong
 
         private void btn_XoaSan_Click(object sender, EventArgs e)
         {
-            int maSan = int.Parse(txtMaSan.Text);
-            SanDAO.Instance.XoaSan(maSan);
-            txtMaSan.Clear();
-            txtTenSan.Clear();
-            cbo_LoaiSan.SelectedIndex = 0;
+            int maSan = 0;
+            try
+            {
+                maSan = int.Parse(txtMaSan.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn sân muốn xóa!");
+            }
+            if(maSan != 0)
+            {
+                SanDAO.Instance.XoaSan(maSan);
+                txtMaSan.Clear();
+                txtTenSan.Clear();
+                cbo_LoaiSan.SelectedIndex = 0;
+            }
             loadSan();
         }
 
         private void btn_SuaSan_Click(object sender, EventArgs e)
         {
-            int maSan = int.Parse(txtMaSan.Text);
-            string tenSan = txtTenSan.Text;
-            int maLoai = int.Parse(cbo_LoaiSan.SelectedValue.ToString());
-            SanDAO.Instance.SuaSan(maSan, tenSan, maLoai);
+            int maSan = 0;
+            try
+            {
+                maSan = int.Parse(txtMaSan.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn sân muốn sửa!");
+            }
+            if(maSan != 0)
+            {
+                string tenSan = txtTenSan.Text;
+                int maLoai = int.Parse(cbo_LoaiSan.SelectedValue.ToString());
+                SanDAO.Instance.SuaSan(maSan, tenSan, maLoai);
+            }
             loadSan();
         }
 
@@ -102,15 +130,34 @@ namespace QLSanBong
 
         private void btnThemLoaiSan_Click(object sender, EventArgs e)
         {
+            
             string tenLoai = txtTenLoai.Text;
-            double giaThue = double.Parse(txtGiaThue.Text);
-            if (KiemTraTrungTenLoai(tenLoai))
-                MessageBox.Show("Tên loại sân đã tồn tại!");
-            else
-                LoaiSanDAO.Instance.ThemLoaiSan(tenLoai, giaThue);
-            txtMaLoai.Clear();
-            txtTenLoai.Clear();
-            txtGiaThue.Clear();
+            if(tenLoai == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên loại!");
+            } else
+            {
+                double giaThue = 0;
+                try
+                {
+                    giaThue = double.Parse(txtGiaThue.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Vui lòng nhập giá thuê!");
+                }
+                if(giaThue != 0)
+                {
+                    if (KiemTraTrungTenLoai(tenLoai))
+                        MessageBox.Show("Tên loại sân đã tồn tại!");
+                    else
+                        LoaiSanDAO.Instance.ThemLoaiSan(tenLoai, giaThue);
+                    txtMaLoai.Clear();
+                    txtTenLoai.Clear();
+                    txtGiaThue.Clear();
+                }
+            }
+            
             loadLoaiSan();
         }
 
@@ -121,20 +168,42 @@ namespace QLSanBong
 
         private void btnXoaLoaiSan_Click(object sender, EventArgs e)
         {
-            int maLoai = int.Parse(txtMaLoai.Text);
-            LoaiSanDAO.Instance.XoaLoaiSan(maLoai);
-            txtMaLoai.Clear();
-            txtTenLoai.Clear();
-            txtGiaThue.Clear();
+            int maLoai = 0;
+            try
+            {
+                maLoai = int.Parse(txtMaLoai.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn loại sân muốn xóa!");
+            }
+            if(maLoai != 0)
+            {
+                LoaiSanDAO.Instance.XoaLoaiSan(maLoai);
+                txtMaLoai.Clear();
+                txtTenLoai.Clear();
+                txtGiaThue.Clear();
+            }
             loadLoaiSan();
         }
 
         private void btnSuaLoaiSan_Click(object sender, EventArgs e)
         {
-            int maLoai = int.Parse(txtMaLoai.Text);
-            string tenLoai = txtTenLoai.Text;
-            double giaThue = double.Parse(txtGiaThue.Text);
-            LoaiSanDAO.Instance.SuaLoaiSan(maLoai, tenLoai, giaThue);
+            int maLoai = 0;
+            try
+            {
+                maLoai = int.Parse(txtMaLoai.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn loại sân muốn sửa!");
+            }
+            if(maLoai != 0)
+            {
+                string tenLoai = txtTenLoai.Text;
+                double giaThue = double.Parse(txtGiaThue.Text);
+                LoaiSanDAO.Instance.SuaLoaiSan(maLoai, tenLoai, giaThue);
+            }
             loadLoaiSan();
         }
 
@@ -161,6 +230,14 @@ namespace QLSanBong
                 txtTenLoai.Clear();
                 txtGiaThue.Clear();
             }
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(txtMaSan.Text != "")
+                btn_XoaSan_Click(sender, e);
+            else
+                btnXoaLoaiSan_Click(sender, e);
         }
     }
 }

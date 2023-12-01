@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLSanBong.DAO;
+using QLSanBong.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,12 @@ namespace QLSanBong
         public FormQuanLyKinhDoanh()
         {
             InitializeComponent();
+            loadKhachHang();
+        }
+        private void loadKhachHang()
+        {
+            List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
+            dataGridView_DSKH.DataSource = listKH;
         }
 
         
