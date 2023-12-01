@@ -29,6 +29,7 @@ namespace QLSanBong
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_DatSan = new System.Windows.Forms.TabPage();
             this.groupBoxDatSan = new System.Windows.Forms.GroupBox();
@@ -50,10 +51,13 @@ namespace QLSanBong
             this.label9 = new System.Windows.Forms.Label();
             this.lblMaSan = new System.Windows.Forms.Label();
             this.dataGridView_LichDatSan = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip_LichDatSan = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage_DatSan.SuspendLayout();
             this.groupBoxDatSan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LichDatSan)).BeginInit();
+            this.contextMenuStrip_LichDatSan.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,6 +73,7 @@ namespace QLSanBong
             // 
             // tabPage_DatSan
             // 
+            this.tabPage_DatSan.BackColor = System.Drawing.Color.Transparent;
             this.tabPage_DatSan.Controls.Add(this.groupBoxDatSan);
             this.tabPage_DatSan.Location = new System.Drawing.Point(4, 29);
             this.tabPage_DatSan.Name = "tabPage_DatSan";
@@ -76,7 +81,6 @@ namespace QLSanBong
             this.tabPage_DatSan.Size = new System.Drawing.Size(1245, 754);
             this.tabPage_DatSan.TabIndex = 0;
             this.tabPage_DatSan.Text = "Đặt sân";
-            this.tabPage_DatSan.UseVisualStyleBackColor = true;
             // 
             // groupBoxDatSan
             // 
@@ -136,31 +140,39 @@ namespace QLSanBong
             // 
             // btn_TraSan
             // 
-            this.btn_TraSan.BackColor = System.Drawing.Color.Transparent;
+            this.btn_TraSan.BackColor = System.Drawing.Color.DarkGreen;
+            this.btn_TraSan.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_TraSan.ForeColor = System.Drawing.Color.White;
             this.btn_TraSan.Location = new System.Drawing.Point(199, 301);
             this.btn_TraSan.Name = "btn_TraSan";
             this.btn_TraSan.Size = new System.Drawing.Size(135, 54);
             this.btn_TraSan.TabIndex = 49;
             this.btn_TraSan.Text = "TRẢ SÂN";
             this.btn_TraSan.UseVisualStyleBackColor = false;
+            this.btn_TraSan.Click += new System.EventHandler(this.btn_TraSan_Click);
             // 
             // btn_Sua
             // 
-            this.btn_Sua.Location = new System.Drawing.Point(376, 301);
+            this.btn_Sua.BackColor = System.Drawing.Color.DarkGreen;
+            this.btn_Sua.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Sua.ForeColor = System.Drawing.Color.White;
+            this.btn_Sua.Location = new System.Drawing.Point(362, 301);
             this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.Size = new System.Drawing.Size(121, 54);
+            this.btn_Sua.Size = new System.Drawing.Size(135, 54);
             this.btn_Sua.TabIndex = 48;
             this.btn_Sua.Text = "SỬA ";
-            this.btn_Sua.UseVisualStyleBackColor = true;
+            this.btn_Sua.UseVisualStyleBackColor = false;
+            this.btn_Sua.Click += new System.EventHandler(this.btn_Sua_Click);
             // 
             // btn_DatSan
             // 
-            this.btn_DatSan.BackColor = System.Drawing.Color.White;
+            this.btn_DatSan.BackColor = System.Drawing.Color.DarkGreen;
             this.btn_DatSan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_DatSan.ForeColor = System.Drawing.Color.Black;
+            this.btn_DatSan.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DatSan.ForeColor = System.Drawing.Color.White;
             this.btn_DatSan.Location = new System.Drawing.Point(43, 301);
             this.btn_DatSan.Name = "btn_DatSan";
-            this.btn_DatSan.Size = new System.Drawing.Size(118, 54);
+            this.btn_DatSan.Size = new System.Drawing.Size(135, 54);
             this.btn_DatSan.TabIndex = 47;
             this.btn_DatSan.Text = "ĐẶT SÂN";
             this.btn_DatSan.UseVisualStyleBackColor = false;
@@ -278,6 +290,7 @@ namespace QLSanBong
             this.dataGridView_LichDatSan.AllowUserToResizeRows = false;
             this.dataGridView_LichDatSan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_LichDatSan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_LichDatSan.ContextMenuStrip = this.contextMenuStrip_LichDatSan;
             this.dataGridView_LichDatSan.Location = new System.Drawing.Point(16, 377);
             this.dataGridView_LichDatSan.Name = "dataGridView_LichDatSan";
             this.dataGridView_LichDatSan.RowHeadersWidth = 51;
@@ -285,6 +298,21 @@ namespace QLSanBong
             this.dataGridView_LichDatSan.Size = new System.Drawing.Size(1149, 308);
             this.dataGridView_LichDatSan.TabIndex = 18;
             this.dataGridView_LichDatSan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_LichDatSan_CellClick);
+            // 
+            // contextMenuStrip_LichDatSan
+            // 
+            this.contextMenuStrip_LichDatSan.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip_LichDatSan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip_LichDatSan.Name = "contextMenuStrip_LichDatSan";
+            this.contextMenuStrip_LichDatSan.Size = new System.Drawing.Size(105, 28);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // FormDatSan
             // 
@@ -294,12 +322,12 @@ namespace QLSanBong
             this.ClientSize = new System.Drawing.Size(1392, 833);
             this.Controls.Add(this.tabControl1);
             this.Name = "FormDatSan";
-            this.Load += new System.EventHandler(this.FormDatSan_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage_DatSan.ResumeLayout(false);
             this.groupBoxDatSan.ResumeLayout(false);
             this.groupBoxDatSan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LichDatSan)).EndInit();
+            this.contextMenuStrip_LichDatSan.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -327,5 +355,7 @@ namespace QLSanBong
         private System.Windows.Forms.FlowLayoutPanel flpSan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMaLich;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_LichDatSan;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
     }
 }

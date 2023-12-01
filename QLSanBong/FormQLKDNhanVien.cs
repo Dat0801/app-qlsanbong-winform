@@ -23,11 +23,16 @@ namespace QLSanBong
 
         private void loadKhachHang()
         {
-            List<KhachHang> listKH = KhachHangDAO.Instance.LoadListSan();
+            List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
             dataGridView_KhachHang.DataSource = listKH;
         }
 
         private void FormQLKDNhanVien_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
         {
 
         }

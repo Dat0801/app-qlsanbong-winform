@@ -20,7 +20,7 @@ namespace QLSanBong.DAO
         }
 
         private KhachHangDAO() { }
-        public List<KhachHang> LoadListSan()
+        public List<KhachHang> LoadListKH()
         {
             List<KhachHang> listKH = new List<KhachHang>();
             DataTable data = DataProvider.Instance.ExecuteQuery("Select * from KhachHang");

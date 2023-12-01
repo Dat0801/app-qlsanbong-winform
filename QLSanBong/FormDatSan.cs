@@ -26,6 +26,10 @@ namespace QLSanBong
             cbo_TenSan.DataSource = ListSan;
             cbo_TenSan.DisplayMember = "TenSan";
             cbo_TenSan.ValueMember = "MaSan";
+            List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
+            cbo_TenKH.DataSource = listKH;
+            cbo_TenKH.DisplayMember = "TenKH";
+            cbo_TenKH.ValueMember = "MaKH";
             foreach (San item in ListSan)
             {
                 Button btn = new Button() { Width = SanDAO.SanWidth, Height = SanDAO.SanHeight };
@@ -93,7 +97,6 @@ namespace QLSanBong
             {
                 txtMaLich.Clear();
                 cbo_TenSan.SelectedIndex = 0;
-                txt_DonGia.Clear();
             }
         }
 
@@ -103,13 +106,87 @@ namespace QLSanBong
             string thoiGianKT = dateTimePicker_NgayKT.Value.ToString();
             int maKH = int.Parse(cbo_TenKH.SelectedValue.ToString());
             int maSan = int.Parse(cbo_TenSan.SelectedValue.ToString());
-            LichDatSanDAO.Instance.ThemLichDatSan(thoiGianBD, thoiGianKT, maKH, maSan);
+            List<LichDatSan> listLDS = LichDatSanDAO.Instance.LoadListLoaiSan();
+            int flag = 0;
+            DateTime TGBD = DateTime.Parse(thoiGianBD);
+            DateTime TGKT = DateTime.Parse(thoiGianKT);
+            if (TGBD == TGKT)
+                flag = 1;
+            foreach (var item in listLDS)
+            {
+                if (item.MaSan == maSan && ((TGBD < item.ThoiGianBD && item.ThoiGianBD < TGKT) || (TGBD > item.ThoiGianBD && TGBD < item.ThoiGianKT)
+                    || (TGBD == item.ThoiGianBD && TGKT == item.ThoiGianKT) || (TGBD == TGKT || TGBD == item.ThoiGianBD)))
+                    flag = 1;
+            }
+            if (flag == 1)
+                MessageBox.Show("Sân đã được đặt trong thời gian trên!");
+            else
+                LichDatSanDAO.Instance.ThemLichDatSan(thoiGianBD, thoiGianKT, maKH, maSan);
             loadLichDatSan();
         }
 
-        private void FormDatSan_Load(object sender, EventArgs e)
+        private void btn_TraSan_Click(object sender, EventArgs e)
         {
+            int maLich = 0;
+            try
+            {
+                 maLich = int.Parse(txtMaLich.Text);
 
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn lịch muốn xóa!");
+            }
+            if(maLich != 0)
+            {
+                LichDatSanDAO.Instance.XoaLichDatSan(maLich);
+                txtMaLich.Clear();
+                cbo_TenSan.SelectedIndex = 0;
+                cbo_TenKH.SelectedIndex = 0;
+            }
+            loadLichDatSan();
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            string thoiGianBD = dateTimePicker_NgayBD.Value.ToString();
+            string thoiGianKT = dateTimePicker_NgayKT.Value.ToString();
+            int maLich = 0;
+            try
+            {
+                maLich = int.Parse(txtMaLich.Text);
+            } 
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn lịch muốn sửa!");
+            }
+            if(maLich != 0)
+            {
+                int maKH = int.Parse(cbo_TenKH.SelectedValue.ToString());
+                int maSan = int.Parse(cbo_TenSan.SelectedValue.ToString());
+                List<LichDatSan> listLDS = LichDatSanDAO.Instance.LoadListLoaiSan();
+                int flag = 0;
+                DateTime TGBD = DateTime.Parse(thoiGianBD);
+                DateTime TGKT = DateTime.Parse(thoiGianKT);
+                if (TGBD == TGKT)
+                    flag = 1;
+                foreach (var item in listLDS)
+                {
+                    if (item.MaLich != maLich && item.MaSan == maSan && ((TGBD < item.ThoiGianBD && item.ThoiGianBD < TGKT) || (TGBD > item.ThoiGianBD && TGBD < item.ThoiGianKT)
+                        || (TGBD == item.ThoiGianBD && TGKT == item.ThoiGianKT) || (TGBD == TGKT || TGBD == item.ThoiGianBD)))
+                        flag = 1;
+                }
+                if (flag == 1)
+                    MessageBox.Show("Sân đã được đặt trong thời gian trên!");
+                else
+                    LichDatSanDAO.Instance.SuaLichDatSan(maLich, thoiGianBD, thoiGianKT, maKH, maSan);
+            }
+            loadLichDatSan();
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_TraSan_Click(sender,e);
         }
     }
 }

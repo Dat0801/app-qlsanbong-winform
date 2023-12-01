@@ -14,7 +14,7 @@ namespace QLSanBong.DTO
         public DateTime ThoiGianKT { get; set; }
         public int MaKH { get; set; }
         public int MaSan { get; set; }
-        public double ThanhTien { get; set; }
+        public decimal ThanhTien { get; set; }
         public LichDatSan(DataRow row)
         {
             this.MaLich = (int)row["MaLich"];
@@ -22,7 +22,7 @@ namespace QLSanBong.DTO
             this.ThoiGianKT = (DateTime)row["ThoiGianKT"];
             this.MaKH = (int)row["MaKH"];
             this.MaSan = (int)row["MaSan"];
-            this.ThanhTien = (double)row["ThanhTien"];
+            this.ThanhTien = (decimal)row["ThanhTien"];
         }
         public LichDatSan() { }
     }

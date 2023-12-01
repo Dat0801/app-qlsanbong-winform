@@ -101,6 +101,11 @@ namespace QLSanBong
             // 
             // dataGridView_KhachHang
             // 
+            this.dataGridView_KhachHang.AllowUserToAddRows = false;
+            this.dataGridView_KhachHang.AllowUserToDeleteRows = false;
+            this.dataGridView_KhachHang.AllowUserToResizeColumns = false;
+            this.dataGridView_KhachHang.AllowUserToResizeRows = false;
+            this.dataGridView_KhachHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_KhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_KhachHang.Location = new System.Drawing.Point(0, 21);
             this.dataGridView_KhachHang.Name = "dataGridView_KhachHang";
@@ -192,6 +197,7 @@ namespace QLSanBong
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
