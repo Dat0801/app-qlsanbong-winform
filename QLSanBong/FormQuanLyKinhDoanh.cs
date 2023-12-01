@@ -25,6 +25,9 @@ namespace QLSanBong
             dataGridView_DSKH.DataSource = listKH;
         }
 
-        
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

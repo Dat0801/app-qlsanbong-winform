@@ -775,6 +775,7 @@ namespace QLSanBong
             this.btnThemKH.Text = "Thêm";
             this.btnThemKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThemKH.UseVisualStyleBackColor = true;
+            this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
             // btnSuaKH
             // 
