@@ -48,10 +48,14 @@
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\DichVuDAO.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\LichDatSanDAO.cs" />
     <Compile Include="DAO\LoaiSanDAO.cs" />
     <Compile Include="DAO\SanDAO.cs" />
+    <Compile Include="DTO\DichVu.cs" />
+    <Compile Include="DTO\HoaDon.cs" />
     <Compile Include="DTO\KhachHang.cs" />
     <Compile Include="DTO\LichDatSan.cs" />
     <Compile Include="DTO\LoaiSan.cs" />
