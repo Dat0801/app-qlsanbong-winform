@@ -23,6 +23,15 @@ namespace QL_SanBong
         {
             string username = txtUserName.Text;
             string password = txtPassword.Text;
+            if(chk_remember.Checked == true)
+            {
+                QLSanBong.Properties.Settings.Default.username = username;
+                QLSanBong.Properties.Settings.Default.password = password;
+            } else
+            {
+                QLSanBong.Properties.Settings.Default.username = null;
+                QLSanBong.Properties.Settings.Default.password = null;
+            }
             if(Login(username, password))
             {
                 this.Hide();
@@ -35,8 +44,6 @@ namespace QL_SanBong
                     FormNhanVien fNhanVien = new FormNhanVien();
                     fNhanVien.ShowDialog();
                 }
-                txtUserName.Clear();
-                txtPassword.Clear();
                 this.Show();
             } else
             {
@@ -66,6 +73,15 @@ namespace QL_SanBong
             if (r == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void fLogin_Load(object sender, EventArgs e)
+        {
+            if(QLSanBong.Properties.Settings.Default.username != null && QLSanBong.Properties.Settings.Default.password != null)
+            {
+                txtUserName.Text = QLSanBong.Properties.Settings.Default.username;
+                txtPassword.Text = QLSanBong.Properties.Settings.Default.password;
             }
         }
     }
