@@ -24,7 +24,7 @@ namespace QLSanBong.DAO
         public List<LichDatSan> LoadListLoaiSan()
         {
             List<LichDatSan> ListLichDatSan = new List<LichDatSan>();
-            DataTable data = DataProvider.Instance.ExecuteQuery("SP_GetListLichDatSan");
+            DataTable data = DataProvider.Instance.ExecuteQuery("SP_GetListLichDatSan1");
             foreach (DataRow row in data.Rows)
             {
                 LichDatSan LichDatSan = new LichDatSan(row);
