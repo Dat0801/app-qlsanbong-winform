@@ -19,7 +19,7 @@ namespace QLSanBong.DTO
         {
             this.MaHD = (int)row["MaHD"];
             this.NgayTao = (DateTime)row["NgayTao"];
-            this.TongTien = Convert.ToSingle(row["TongTien"]);
+            this.TongTien = Convert.ToInt32(row["TongTien"]);
             this.MaLich = (int)row["MaLich"];
             this.MaKH = (int)row["MaKH"];
         }

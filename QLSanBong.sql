@@ -423,3 +423,89 @@ BEGIN
 	WHERE MaLich = @MaLich
 END
 GO
+
+-- Stored Procedures Dịch vụ
+-- Stored Procedures SP_GetListLoaiSan
+GO
+CREATE PROC SP_GetListDichVu
+AS
+BEGIN
+	SELECT * FROM DICHVU
+END
+GO
+-- Stored Procedures SP_KiemTraTrungDichVu
+GO
+CREATE PROC SP_KiemTraTrungTenDichVu
+@TenDV nvarchar(100)
+AS 
+BEGIN
+	SELECT * FROM DICHVU WHERE TENDV = @TenDV
+END
+GO
+-- Stored Procedures SP_ThemDichVu
+GO
+CREATE PROC SP_ThemDichVu
+@TenDV nvarchar(100), @Gia float
+AS
+BEGIN
+	INSERT INTO DICHVU
+	VALUES (@TenDV, @Gia)
+END
+GO
+-- Stored Procedures SP_XoaDV
+GO
+CREATE PROC SP_XoaDV1
+@TenDV nvarchar(200)
+AS
+BEGIN
+	DELETE FROM DICHVU WHERE TenDV = @TenDV
+END
+GO
+select *from dichvu
+
+-- Stored Procedures SP_GetListHoaDon
+GO
+CREATE PROC SP_GetListHoaDon
+AS
+BEGIN
+	SELECT * FROM HOADON
+END
+GO
+
+GO
+CREATE PROC SP_XoaHoaDon 
+@MaHD int
+AS
+BEGIN
+	DELETE FROM HOADON WHERE MaHD = @MaHD
+END
+
+GO
+CREATE PROC SP_SuaHoaDon
+    @MaHD INT,
+    @NgayTao DATETIME,
+    @TongTien DECIMAL(18, 0),
+    @MaKH INT
+AS
+BEGIN
+    UPDATE HOADON
+    SET NgayTao = @NgayTao,
+        TongTien = @TongTien,
+        MaKH = @MaKH
+    WHERE MaHD = @MaHD;
+END
+GO
+
+CREATE PROC SP_CanEditMaHD
+    @MaHD INT
+AS
+BEGIN
+    DECLARE @CanEdit BIT;
+
+    SELECT @CanEdit = CASE
+        WHEN @MaHD > 0 THEN 1
+        ELSE 0
+    END;
+
+    SELECT @CanEdit AS CanEdit;
+END

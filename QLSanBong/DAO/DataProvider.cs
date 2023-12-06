@@ -12,7 +12,8 @@ namespace MyClass.DAO
     {
         private static DataProvider instance;
 
-        private string conStr = "Data Source=LAPTOP-70K25FBU;Initial Catalog=QLSANBONG3;Integrated Security=True";
+        //private string conStr = "Data Source=LAPTOP-70K25FBU;Initial Catalog=QLSANBONG3;Integrated Security=True";
+        private string conStr = "Data Source=DESKTOP-S0K3I3A;Initial Catalog=QLSANBONG;Integrated Security=True";
 
         public static DataProvider Instance
         {

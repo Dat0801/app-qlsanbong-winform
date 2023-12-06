@@ -160,7 +160,7 @@ namespace QLSanBong
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(112, 40);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(228, 32);
+            this.label6.Size = new System.Drawing.Size(229, 32);
             this.label6.TabIndex = 15;
             this.label6.Text = "Tổng doanh thu: ";
             // 
@@ -321,6 +321,9 @@ namespace QLSanBong
             // 
             // dgv_DichVu
             // 
+            this.dgv_DichVu.AllowUserToAddRows = false;
+            this.dgv_DichVu.AllowUserToDeleteRows = false;
+            this.dgv_DichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_DichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DichVu.Location = new System.Drawing.Point(0, 21);
             this.dgv_DichVu.Name = "dgv_DichVu";
@@ -398,7 +401,7 @@ namespace QLSanBong
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(60, 332);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 20);
+            this.label2.Size = new System.Drawing.Size(69, 21);
             this.label2.TabIndex = 39;
             this.label2.Text = "Đơn giá";
             // 
@@ -414,7 +417,7 @@ namespace QLSanBong
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(60, 271);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 20);
+            this.label4.Size = new System.Drawing.Size(103, 21);
             this.label4.TabIndex = 37;
             this.label4.Text = "Tên dịch vụ:";
             // 
@@ -465,7 +468,7 @@ namespace QLSanBong
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(77, 28);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(96, 20);
+            this.label13.Size = new System.Drawing.Size(99, 21);
             this.label13.TabIndex = 0;
             this.label13.Text = "Tên dịch vụ";
             // 
@@ -615,6 +618,9 @@ namespace QLSanBong
             // 
             // dgv_HoaDon
             // 
+            this.dgv_HoaDon.AllowUserToAddRows = false;
+            this.dgv_HoaDon.AllowUserToDeleteRows = false;
+            this.dgv_HoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_HoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_HoaDon.Location = new System.Drawing.Point(28, 202);
             this.dgv_HoaDon.Name = "dgv_HoaDon";
@@ -696,7 +702,7 @@ namespace QLSanBong
             this.lb_SDT.Location = new System.Drawing.Point(73, 357);
             this.lb_SDT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_SDT.Name = "lb_SDT";
-            this.lb_SDT.Size = new System.Drawing.Size(118, 20);
+            this.lb_SDT.Size = new System.Drawing.Size(123, 21);
             this.lb_SDT.TabIndex = 60;
             this.lb_SDT.Text = "Số Điện Thoại:";
             // 
@@ -706,7 +712,7 @@ namespace QLSanBong
             this.lb_DiaChi.Location = new System.Drawing.Point(73, 305);
             this.lb_DiaChi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_DiaChi.Name = "lb_DiaChi";
-            this.lb_DiaChi.Size = new System.Drawing.Size(64, 20);
+            this.lb_DiaChi.Size = new System.Drawing.Size(69, 21);
             this.lb_DiaChi.TabIndex = 59;
             this.lb_DiaChi.Text = "Địa chỉ:";
             // 
@@ -716,7 +722,7 @@ namespace QLSanBong
             this.lb_TenKH.Location = new System.Drawing.Point(73, 252);
             this.lb_TenKH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_TenKH.Name = "lb_TenKH";
-            this.lb_TenKH.Size = new System.Drawing.Size(137, 20);
+            this.lb_TenKH.Size = new System.Drawing.Size(140, 21);
             this.lb_TenKH.TabIndex = 58;
             this.lb_TenKH.Text = "Tên Khách Hàng:";
             // 
@@ -798,7 +804,7 @@ namespace QLSanBong
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(44, 28);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(125, 20);
+            this.label16.Size = new System.Drawing.Size(128, 21);
             this.label16.TabIndex = 0;
             this.label16.Text = "Tên khách hàng";
             // 
