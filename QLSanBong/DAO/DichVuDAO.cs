@@ -35,7 +35,7 @@ namespace QLSanBong.DAO
         public List<DichVu> TimKiemdicvu(string tenDV)
         {
             List<DichVu> ListDV = new List<DichVu>();
-            string query = "SP_SearchDichVuByName @TenDichVu";
+            string query = "SP_TimDVTheoTen @TenDV";
             DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { tenDV });
             foreach (DataRow row in data.Rows)
             {
