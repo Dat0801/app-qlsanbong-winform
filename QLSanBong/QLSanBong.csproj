@@ -52,6 +52,7 @@
     <Compile Include="DAO\LichDatSanDAO.cs" />
     <Compile Include="DAO\LoaiSanDAO.cs" />
     <Compile Include="DAO\SanDAO.cs" />
+    <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\KhachHang.cs" />
     <Compile Include="DTO\LichDatSan.cs" />
     <Compile Include="DTO\LoaiSan.cs" />

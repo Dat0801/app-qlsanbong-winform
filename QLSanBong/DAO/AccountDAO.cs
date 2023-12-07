@@ -1,4 +1,5 @@
 ﻿using MyClass.DAO;
+using QLSanBong.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,7 +20,17 @@ namespace QLSanBong.DAO
         }
 
         private AccountDAO() {}
-
+        public List<Account> LoadListTK()
+        {
+            List<Account> listTK = new List<Account>();
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Account");
+            foreach (DataRow row in data.Rows)
+            {
+                Account tk = new Account(row);
+                listTK.Add(tk);
+            }
+            return listTK;
+        }
         public bool Login(string username, string password)
         {
             string query = "SP_Login @username , @password";
@@ -33,6 +44,36 @@ namespace QLSanBong.DAO
             DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { username, password });
             DataRow role = result.Rows[0];
             return (int) role["Role"];
+        }
+        public bool ThemTaiKhoan(string username, string password, string displayname, string role)
+        {
+            string query = "insert into ACCOUNT values ('" + username + "', '" + password + "', '" + displayname + "', '" + role + "')";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            return result.Rows.Count > 0;
+        }
+        public bool XoaTaiKhoan(string username)
+        {
+            string query = "delete from ACCOUNT where UserName = '"+ username +"'";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            return result.Rows.Count > 0;
+        }
+        public bool SuaTaiKhoan(string username, string password, string displayname, string role)
+        {
+            string query = "update from ACCOUNT where UserName = '" + username + "',Password = '" + password + "',DisplayName = '" + displayname + "',Role = '" + role + "'";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            return result.Rows.Count > 0;
+        }
+        public List<Account> timkiemTaiKhoan(string username)
+        {
+            List<Account> ListTaiKhoan = new List<Account>();
+            string query = "SELECT * FROM Account WHERE UserName = '" + username + "'";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow row in data.Rows)
+            {
+                Account account = new Account(row);
+                ListTaiKhoan.Add(account);
+            }
+            return ListTaiKhoan;
         }
     }
 }
