@@ -85,6 +85,8 @@ namespace QLSanBong
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.dataGridView_DSKH = new System.Windows.Forms.DataGridView();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtMaKH = new System.Windows.Forms.TextBox();
             this.txt_SDT = new System.Windows.Forms.TextBox();
             this.txt_DiaChi = new System.Windows.Forms.TextBox();
             this.lb_SDT = new System.Windows.Forms.Label();
@@ -98,8 +100,6 @@ namespace QLSanBong
             this.btn_timkiem = new System.Windows.Forms.Button();
             this.txt_tkTenKH = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtMaKH = new System.Windows.Forms.TextBox();
             this.tab_QLKinhDoanh.SuspendLayout();
             this.tab_QLDoanhThu.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -231,6 +231,9 @@ namespace QLSanBong
             // 
             // dgv_Doanhthu
             // 
+            this.dgv_Doanhthu.AllowUserToAddRows = false;
+            this.dgv_Doanhthu.AllowUserToDeleteRows = false;
+            this.dgv_Doanhthu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_Doanhthu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Doanhthu.Location = new System.Drawing.Point(29, 149);
             this.dgv_Doanhthu.Name = "dgv_Doanhthu";
@@ -800,6 +803,25 @@ namespace QLSanBong
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Thông tin";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(73, 202);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 21);
+            this.label6.TabIndex = 65;
+            this.label6.Text = "Mã KH:";
+            // 
+            // txtMaKH
+            // 
+            this.txtMaKH.Location = new System.Drawing.Point(221, 199);
+            this.txtMaKH.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.ReadOnly = true;
+            this.txtMaKH.Size = new System.Drawing.Size(209, 28);
+            this.txtMaKH.TabIndex = 64;
+            // 
             // txt_SDT
             // 
             this.txt_SDT.Location = new System.Drawing.Point(221, 348);
@@ -938,25 +960,6 @@ namespace QLSanBong
             this.label16.Size = new System.Drawing.Size(128, 21);
             this.label16.TabIndex = 0;
             this.label16.Text = "Tên khách hàng";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(73, 202);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 26);
-            this.label6.TabIndex = 65;
-            this.label6.Text = "Mã KH:";
-            // 
-            // txtMaKH
-            // 
-            this.txtMaKH.Location = new System.Drawing.Point(221, 199);
-            this.txtMaKH.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.ReadOnly = true;
-            this.txtMaKH.Size = new System.Drawing.Size(209, 28);
-            this.txtMaKH.TabIndex = 64;
             // 
             // FormQuanLyKinhDoanh
             // 
