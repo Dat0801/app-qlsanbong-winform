@@ -45,7 +45,6 @@ namespace QLSanBong
             this.txt_TK = new System.Windows.Forms.TextBox();
             this.btn_Them = new System.Windows.Forms.Button();
             this.btn__Sua = new System.Windows.Forms.Button();
-            this.btn_Xoa = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.btn_TimKiem = new System.Windows.Forms.Button();
@@ -95,6 +94,9 @@ namespace QLSanBong
             // 
             // dataGridView4
             // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Location = new System.Drawing.Point(0, 21);
             this.dataGridView4.Name = "dataGridView4";
@@ -116,7 +118,6 @@ namespace QLSanBong
             this.groupBox8.Controls.Add(this.txt_TK);
             this.groupBox8.Controls.Add(this.btn_Them);
             this.groupBox8.Controls.Add(this.btn__Sua);
-            this.groupBox8.Controls.Add(this.btn_Xoa);
             this.groupBox8.Controls.Add(this.groupBox9);
             this.groupBox8.Location = new System.Drawing.Point(720, 22);
             this.groupBox8.Name = "groupBox8";
@@ -201,7 +202,7 @@ namespace QLSanBong
             // 
             this.btn_Them.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Them.Image = ((System.Drawing.Image)(resources.GetObject("btn_Them.Image")));
-            this.btn_Them.Location = new System.Drawing.Point(29, 417);
+            this.btn_Them.Location = new System.Drawing.Point(70, 417);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(134, 69);
             this.btn_Them.TabIndex = 46;
@@ -214,7 +215,7 @@ namespace QLSanBong
             // 
             this.btn__Sua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn__Sua.Image = ((System.Drawing.Image)(resources.GetObject("btn__Sua.Image")));
-            this.btn__Sua.Location = new System.Drawing.Point(349, 417);
+            this.btn__Sua.Location = new System.Drawing.Point(291, 417);
             this.btn__Sua.Name = "btn__Sua";
             this.btn__Sua.Size = new System.Drawing.Size(134, 69);
             this.btn__Sua.TabIndex = 45;
@@ -222,19 +223,6 @@ namespace QLSanBong
             this.btn__Sua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn__Sua.UseVisualStyleBackColor = true;
             this.btn__Sua.Click += new System.EventHandler(this.btn__Sua_Click);
-            // 
-            // btn_Xoa
-            // 
-            this.btn_Xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Xoa.Image")));
-            this.btn_Xoa.Location = new System.Drawing.Point(187, 417);
-            this.btn_Xoa.Name = "btn_Xoa";
-            this.btn_Xoa.Size = new System.Drawing.Size(134, 69);
-            this.btn_Xoa.TabIndex = 44;
-            this.btn_Xoa.Text = "Xóa";
-            this.btn_Xoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Xoa.UseVisualStyleBackColor = true;
-            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // groupBox9
             // 
@@ -316,7 +304,6 @@ namespace QLSanBong
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.Button btn__Sua;
-        private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button btn_TimKiem;

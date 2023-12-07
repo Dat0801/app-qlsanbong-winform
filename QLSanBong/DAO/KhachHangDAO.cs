@@ -33,13 +33,13 @@ namespace QLSanBong.DAO
         }
         public bool ThemKhachHang(string tenKhachHang, string diachi,  string sdt)
         {
-            string query = "insert into KHACHHANG values ('" + tenKhachHang + "', '" + diachi + "', '" + sdt + "')";
+            string query = "insert into KHACHHANG values (N'" + tenKhachHang + "', '" + diachi + "', '" + sdt + "')";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }
-        public bool SuaDanhSach(string tenKhachHang, string diachi,  string sdt)
+        public bool SuaDanhSach(string tenKhachHang, string diachi,  string sdt, int makh)
         {
-            string query = "update KHACHHANG set TenKH = '" + tenKhachHang + "',DiaChi = '" + diachi + "',SDT= '" + sdt + "'where MaKH = " + tenKhachHang + "";
+            string query = "update KHACHHANG set TenKH = N'" + tenKhachHang + "',DiaChi = '" + diachi + "',SDT= '" + sdt + "'where MaKH = " + makh + "";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }

@@ -59,7 +59,7 @@ namespace QLSanBong.DAO
         }
         public bool SuaTaiKhoan(string username, string password, string displayname, string role)
         {
-            string query = "update from ACCOUNT where UserName = '" + username + "',Password = '" + password + "',DisplayName = '" + displayname + "',Role = '" + role + "'";
+            string query = "update ACCOUNT set Password = '" + password + "',DisplayName = '" + displayname + "',Role = '" + role + "' where UserName = '" + username + "'";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }
