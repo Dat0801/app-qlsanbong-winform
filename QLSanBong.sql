@@ -58,9 +58,9 @@ CREATE TABLE HOADON
 	NgayTao DATETIME DEFAULT GETDATE(),
 	MaSan INT NOT NULL,
 	MaKH INT NOT NULL,
-	TongGio INT,
+	TongPhut INT,
 	DonGia decimal,
-	TongTien FLOAT DEFAULT 0,
+	TongTien decimal DEFAULT 0,
 	CONSTRAINT PK_HOADON PRIMARY KEY (MaHD),
 	CONSTRAINT FK_HOADON_SANBONG FOREIGN KEY (MaSan) REFERENCES SANBONG(MaSan),
 	CONSTRAINT FK_HOADON_KHACHHANG FOREIGN KEY (MaKH) REFERENCES KHACHHANG(MaKH)
@@ -127,7 +127,7 @@ ON LICHDATSAN
 AFTER DELETE
 AS
 BEGIN
-	DECLARE @MaSan INT,  @MaKH INT, @TongGio INT, @GiaThue DECIMAL, @ThanhTien DECIMAL
+	DECLARE @MaSan INT,  @MaKH INT, @TongPhut INT, @GiaThue DECIMAL, @ThanhTien DECIMAL
 	SET @MaSan = (SELECT MaSan FROM deleted)
 	SET @MaKH = (SELECT MaKH FROM deleted)
 	DECLARE @THOIGIANBD TIME,  @THOIGIANKT TIME
@@ -139,9 +139,9 @@ BEGIN
 					WHERE (SELECT MASAN FROM deleted) = SANBONG.MASAN
 					AND LOAISAN.MaLoai = SANBONG.MaLoai
 					)
-    SET @TongGio = (DATEDIFF(MINUTE, @THOIGIANBD, @THOIGIANKT) / 60)
-	INSERT INTO HOADON (MaKH, MaSan, TongGio, DonGia, TongTien)
-	VALUES (@MaKH,@MaSan, @TongGio, @GiaThue, @ThanhTien)
+    SET @TongPhut = DATEDIFF(MINUTE, @THOIGIANBD, @THOIGIANKT)
+	INSERT INTO HOADON (MaKH, MaSan, TongPhut, DonGia, TongTien)
+	VALUES (@MaKH,@MaSan, @TongPhut, @GiaThue, @ThanhTien)
 END
 GO
 
@@ -234,14 +234,14 @@ VALUES('11-17-2023 13:00', '11-17-2023 18:00', 5, 2)
 INSERT INTO LICHDATSAN (THOIGIANBD, THOIGIANKT, MAKH, MASAN)
 VALUES('11-20-2023 15:00', '11-20-2023 17:00', 6, 11)
 
-INSERT INTO HOADON (MASAN, MAKH, TongGio, DonGia, TongTien)
-VALUES (1,1,2,100000, 200000)
+INSERT INTO HOADON
+VALUES ('11-20-2023 15:00',1,1,120,100000, 200000)
 
-INSERT INTO HOADON (MASAN, MAKH, TongGio, DonGia, TongTien)
-VALUES(2,2,3,100000, 300000)
+INSERT INTO HOADON
+VALUES('10-20-2023 18:00',2,2,180,100000, 300000)
 
-INSERT INTO HOADON (MASAN, MAKH, TongGio, DonGia, TongTien)
-VALUES(3,3,2,100000, 200000)
+INSERT INTO HOADON
+VALUES('12-10-2023 21:00',3,3,120,100000, 200000)
 
 INSERT INTO DICHVU
 VALUES (N'Nước uống Sting', 10000),
@@ -460,10 +460,12 @@ AS
 BEGIN
 	DELETE FROM DICHVU WHERE TenDV = @TenDV
 END
-GO
-select *from dichvu
 
+<<<<<<< HEAD
 go
+=======
+GO
+>>>>>>> 3d43ef5297f52e4904db7cfa75cb395fab2fb792
 CREATE PROC SP_SuaDichVu1
 @MaDV int, @TenDV nvarchar(100), @Gia int
 AS
@@ -497,7 +499,7 @@ CREATE PROC SP_SuaHoaDon5
     @TongTien DECIMAL(18, 0),
     @MaKH INT,
 	@MaSan INT,
-	@TongGio INT
+	@TongPhut INT
 AS
 BEGIN
     UPDATE HOADON
@@ -505,7 +507,7 @@ BEGIN
         TongTien = @TongTien,
         MaKH = @MaKH,
 		MaSan = @MaSan,
-		TongGio = @TongGio
+		TongPhut = @TongPhut
     WHERE MaHD = @MaHD;
 END
 GO
@@ -523,7 +525,11 @@ BEGIN
 
     SELECT @CanEdit AS CanEdit;
 END
+<<<<<<< HEAD
 --đoạn sửa đổi thêm
+=======
+
+>>>>>>> 3d43ef5297f52e4904db7cfa75cb395fab2fb792
 --Stored Procedures SP_TimDV
 GO
 CREATE PROC SP_TimDV
@@ -534,10 +540,13 @@ BEGIN
 	WHERE TenDV LIKE '%' + @TenDV + '%';
 END
 GO
+<<<<<<< HEAD
 select *from hoadon
 select *from CHITIETHD
 
 
+=======
+>>>>>>> 3d43ef5297f52e4904db7cfa75cb395fab2fb792
 
 GO
 CREATE PROC SP_GetListCTHoaDon
@@ -556,5 +565,9 @@ AS
 BEGIN
     INSERT INTO CHITIETHD(MaHD, MaDV, SoLuong)
     VALUES (@MaHD, @MaDV, @SoLuong);
+<<<<<<< HEAD
 END
 
+=======
+END
+>>>>>>> 3d43ef5297f52e4904db7cfa75cb395fab2fb792

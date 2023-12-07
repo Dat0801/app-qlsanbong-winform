@@ -131,7 +131,6 @@ namespace QLSanBong
             try
             {
                  maLich = int.Parse(txtMaLich.Text);
-
             }
             catch
             {
@@ -139,10 +138,19 @@ namespace QLSanBong
             }
             if(maLich != 0)
             {
-                LichDatSanDAO.Instance.XoaLichDatSan(maLich);
-                txtMaLich.Clear();
-                cbo_TenSan.SelectedIndex = 0;
-                cbo_TenKH.SelectedIndex = 0;
+                DialogResult r;
+                r = MessageBox.Show("Bạn có chắc muốn trả sân?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (r == DialogResult.Yes)
+                {
+                    LichDatSanDAO.Instance.XoaLichDatSan(maLich);
+                    txtMaLich.Clear();
+                    cbo_TenSan.SelectedIndex = 0;
+                    cbo_TenKH.SelectedIndex = 0;
+                    TimeSpan timeDiff = dateTimePicker_NgayKT.Value - dateTimePicker_NgayBD.Value;
+                    int TongPhut = (int)timeDiff.TotalMinutes;
+                    MessageBox.Show("Tổng phút là: " + TongPhut);
+                }
+                
             }
             loadLichDatSan();
         }

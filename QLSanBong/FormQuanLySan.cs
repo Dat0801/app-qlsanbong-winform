@@ -84,10 +84,15 @@ namespace QLSanBong
             }
             if(maSan != 0)
             {
-                SanDAO.Instance.XoaSan(maSan);
-                txtMaSan.Clear();
-                txtTenSan.Clear();
-                cbo_LoaiSan.SelectedIndex = 0;
+                DialogResult r;
+                r = MessageBox.Show("Bạn có chắc muốn xóa sân?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (r == DialogResult.Yes)
+                {
+                    SanDAO.Instance.XoaSan(maSan);
+                    txtMaSan.Clear();
+                    txtTenSan.Clear();
+                    cbo_LoaiSan.SelectedIndex = 0;
+                }
             }
             loadSan();
         }
@@ -179,10 +184,16 @@ namespace QLSanBong
             }
             if(maLoai != 0)
             {
-                LoaiSanDAO.Instance.XoaLoaiSan(maLoai);
-                txtMaLoai.Clear();
-                txtTenLoai.Clear();
-                txtGiaThue.Clear();
+                DialogResult r;
+                r = MessageBox.Show("Bạn có chắc muốn xóa loại sân này?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (r == DialogResult.Yes)
+                {
+                    LoaiSanDAO.Instance.XoaLoaiSan(maLoai);
+                    txtMaLoai.Clear();
+                    txtTenLoai.Clear();
+                    txtGiaThue.Clear();
+                }
+                
             }
             loadLoaiSan();
         }
