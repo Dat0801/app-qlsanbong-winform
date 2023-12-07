@@ -345,15 +345,6 @@ namespace QLSanBong
             this.groupBox1.Text = "Danh sách";
             // 
             // dgv_DichVu
-            // 
-            //this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            //this.dataGridView3.Location = new System.Drawing.Point(0, 21);
-            //this.dataGridView3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.dataGridView3.Name = "dataGridView3";
-            //this.dataGridView3.RowHeadersWidth = 51;
-            //this.dataGridView3.RowTemplate.Height = 24;
-            //this.dataGridView3.Size = new System.Drawing.Size(683, 594);
-            //this.dataGridView3.TabIndex = 4;
             this.dgv_DichVu.AllowUserToAddRows = false;
             this.dgv_DichVu.AllowUserToDeleteRows = false;
             this.dgv_DichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -384,55 +375,7 @@ namespace QLSanBong
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin";
-            // 
-            // btnThem
-            // 
-            //this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            //this.btnThem.Location = new System.Drawing.Point(29, 417);
-            //this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.btnThem.Name = "btnThem";
-            //this.btnThem.Size = new System.Drawing.Size(133, 69);
-            //this.btnThem.TabIndex = 46;
-            //this.btnThem.Text = "Thêm";
-            //this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            //this.btnThem.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            //this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            //this.button2.Location = new System.Drawing.Point(349, 417);
-            //this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.button2.Name = "button2";
-            //this.button2.Size = new System.Drawing.Size(133, 69);
-            //this.button2.TabIndex = 45;
-            //this.button2.Text = "Sửa";
-            //this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            //this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            //this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            //this.button4.Location = new System.Drawing.Point(187, 417);
-            //this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.button4.Name = "button4";
-            //this.button4.Size = new System.Drawing.Size(133, 69);
-            //this.button4.TabIndex = 44;
-            //this.button4.Text = "Xóa";
-            //this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            //this.button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            //this.textBox2.Location = new System.Drawing.Point(169, 329);
-            //this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.textBox2.Name = "textBox2";
-            //this.textBox2.Size = new System.Drawing.Size(261, 28);
-            //this.textBox2.TabIndex = 40;
-            // btnThemDV
-            // 
+            
             this.btnThemDV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemDV.Image = ((System.Drawing.Image)(resources.GetObject("btnThemDV.Image")));
             this.btnThemDV.Location = new System.Drawing.Point(29, 417);
@@ -530,18 +473,6 @@ namespace QLSanBong
             this.groupBox5.Text = "Tìm kiếm";
             // 
             // btn_timDV
-            // 
-            //this.button7.BackColor = System.Drawing.Color.White;
-            //this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            //this.button7.Location = new System.Drawing.Point(463, 11);
-            //this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.button7.Name = "button7";
-            //this.button7.Size = new System.Drawing.Size(187, 54);
-            //this.button7.TabIndex = 15;
-            //this.button7.Text = "Tìm kiếm";
-            //this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            //this.button7.UseVisualStyleBackColor = false;
             this.btn_timDV.BackColor = System.Drawing.Color.White;
             this.btn_timDV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_timDV.Image = ((System.Drawing.Image)(resources.GetObject("btn_timDV.Image")));
@@ -556,11 +487,7 @@ namespace QLSanBong
             // 
             // txt_NameDV
             // 
-            //this.textBox6.Location = new System.Drawing.Point(199, 25);
-            //this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.textBox6.Name = "textBox6";
-            //this.textBox6.Size = new System.Drawing.Size(215, 28);
-            //this.textBox6.TabIndex = 1;
+            
             this.txt_NameDV.Location = new System.Drawing.Point(199, 25);
             this.txt_NameDV.Name = "txt_NameDV";
             this.txt_NameDV.Size = new System.Drawing.Size(215, 28);
@@ -599,16 +526,7 @@ namespace QLSanBong
             // 
             // btn_SuaHD
             // 
-            //this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            //this.button3.Location = new System.Drawing.Point(997, 126);
-            //this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.button3.Name = "button3";
-            //this.button3.Size = new System.Drawing.Size(131, 70);
-            //this.button3.TabIndex = 43;
-            //this.button3.Text = "Sửa";
-            //this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            //this.button3.UseVisualStyleBackColor = true;
+            
             this.btn_SuaHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SuaHD.Image = ((System.Drawing.Image)(resources.GetObject("btn_SuaHD.Image")));
             this.btn_SuaHD.Location = new System.Drawing.Point(997, 126);
@@ -656,30 +574,7 @@ namespace QLSanBong
             // 
             // txt_MaHD
             // 
-            //this.txt_Dongia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            //this.txt_Dongia.Location = new System.Drawing.Point(812, 110);
-            //this.txt_Dongia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.txt_Dongia.Name = "txt_Dongia";
-            //this.txt_Dongia.Size = new System.Drawing.Size(101, 28);
-            //this.txt_Dongia.TabIndex = 23;
-            // 
-            // txt_PhutDa
-            // 
-            //this.txt_PhutDa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            //this.txt_PhutDa.Location = new System.Drawing.Point(812, 71);
-            //this.txt_PhutDa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.txt_PhutDa.Name = "txt_PhutDa";
-            //this.txt_PhutDa.Size = new System.Drawing.Size(101, 28);
-            //this.txt_PhutDa.TabIndex = 22;
-            // 
-            // txt_MaSan
-            // 
-            //this.txt_MaSan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            //this.txt_MaSan.Location = new System.Drawing.Point(409, 110);
-            //this.txt_MaSan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.txt_MaSan.Name = "txt_MaSan";
-            //this.txt_MaSan.Size = new System.Drawing.Size(178, 28);
-            //this.txt_MaSan.TabIndex = 20;
+            
             this.txt_MaHD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_MaHD.Location = new System.Drawing.Point(409, 110);
             this.txt_MaHD.Name = "txt_MaHD";
@@ -705,26 +600,6 @@ namespace QLSanBong
             this.label7.Size = new System.Drawing.Size(108, 20);
             this.label7.TabIndex = 18;
             this.label7.Text = "Tổng tiền HĐ";
-            // 
-            // label8
-            // 
-            //this.label8.AutoSize = true;
-            //this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.label8.Location = new System.Drawing.Point(677, 110);
-            //this.label8.Name = "label8";
-            //this.label8.Size = new System.Drawing.Size(66, 20);
-            //this.label8.TabIndex = 17;
-            //this.label8.Text = "Đơn giá";
-            // 
-            // label9
-            // 
-            //this.label9.AutoSize = true;
-            //this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.label9.Location = new System.Drawing.Point(677, 73);
-            //this.label9.Name = "label9";
-            //this.label9.Size = new System.Drawing.Size(106, 20);
-            //this.label9.TabIndex = 16;
-            //this.label9.Text = "Tổng phút đá";
             // 
             // label10
             // 
@@ -782,15 +657,6 @@ namespace QLSanBong
             this.lb_hoadon.UseCompatibleTextRendering = true;
             // 
             // dgv_HoaDon
-            // 
-            //this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            //this.dataGridView2.Location = new System.Drawing.Point(28, 202);
-            //this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            //this.dataGridView2.Name = "dataGridView2";
-            //this.dataGridView2.RowHeadersWidth = 51;
-            //this.dataGridView2.RowTemplate.Height = 24;
-            //this.dataGridView2.Size = new System.Drawing.Size(1196, 505);
-            //this.dataGridView2.TabIndex = 7;
             this.dgv_HoaDon.AllowUserToAddRows = false;
             this.dgv_HoaDon.AllowUserToDeleteRows = false;
             this.dgv_HoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
