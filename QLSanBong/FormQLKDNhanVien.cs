@@ -19,6 +19,7 @@ namespace QLSanBong
         {
             InitializeComponent();
             loadKhachHang();
+            loadHoaDon();
         }
 
         private void loadKhachHang()
@@ -27,14 +28,137 @@ namespace QLSanBong
             dataGridView_KhachHang.DataSource = listKH;
         }
 
-        private void FormQLKDNhanVien_Load(object sender, EventArgs e)
+        private void loadHoaDon()
         {
-
+            List<HoaDon> listHD = HoaDonDAO.Instance.LoadListHoaDon();
+            dgv_HoaDon.DataSource = listHD;
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (dgv_HoaDon.SelectedCells.Count > 0)
+                {
+
+                    int selectedRowIndex = dgv_HoaDon.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dgv_HoaDon.Rows[selectedRowIndex];
+                    int maHD = Convert.ToInt32(selectedRow.Cells["MaHD"].Value);
+                    int result = HoaDonDAO.Instance.XoaHoaDon(maHD);
+
+                    if (result > 0)
+                    {
+                        loadHoaDon();
+                        MessageBox.Show("Xóa thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn một dòng để xóa.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+            }
+        }
+
+        private void dgv_HoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
+
+                cbo_MAKH.DataSource = listKH;
+                cbo_MAKH.DisplayMember = "TenKH";
+                cbo_MAKH.ValueMember = "MaKH";
+                DataGridViewRow row = dgv_HoaDon.Rows[e.RowIndex];
+                txt_MaHD.Text = Convert.ToString(row.Cells["MaHD"].Value);
+                dateTimePicker_NgayBD.Text = Convert.ToString(row.Cells["NgayTao"].Value);
+                txt_Tongtien.Text = Convert.ToString(row.Cells["TongTien"].Value);
+                int maKHFromDGV = Convert.ToInt32(row.Cells["MaKH"].Value);
+                txt_PhutDa.Text = (row.Cells["TongPhut"].Value).ToString();
+                txt_MaSan.Text = row.Cells["MaSan"].Value.ToString();
+                txt_Dongia.Text = row.Cells["DonGia"].Value.ToString();
+                // Tìm tên khách hàng tương ứng trong danh sách listKH
+                KhachHang khachHang = listKH.Find(kh => kh.MaKH == maKHFromDGV);
+
+                if (khachHang != null)
+                {
+                    cbo_MAKH.SelectedValue = khachHang.MaKH;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy thông tin khách hàng.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+            }
 
         }
+        private void btn_SuaHD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv_HoaDon.SelectedCells.Count > 0)
+                {
+                    int selectedRowIndex = dgv_HoaDon.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dgv_HoaDon.Rows[selectedRowIndex];
+
+                    int maHD = Convert.ToInt32(selectedRow.Cells["MaHD"].Value);
+
+                    bool canEdit = HoaDonDAO.Instance.CanEditMaHD(maHD);
+
+                    if (canEdit == true)
+                    {
+                        DateTime ngayTao = dateTimePicker_NgayBD.Value;
+                        decimal tongTien;
+
+                        if (!decimal.TryParse(txt_Tongtien.Text, out tongTien))
+                        {
+                            MessageBox.Show("Tổng tiền không hợp lệ!");
+                            return;
+                        }
+
+                        int maKH = Convert.ToInt32(cbo_MAKH.SelectedValue);
+                        int maSan = Convert.ToInt32(txt_MaSan.Text);
+                        int tongPhut = Convert.ToInt32(txt_PhutDa.Text);
+
+                        // Thực hiện sửa thông tin
+                        int result = HoaDonDAO.Instance.SuaHoaDon(maHD, ngayTao, tongTien, maKH, maSan, tongPhut);
+
+                        // Kiểm tra và hiển thị kết quả
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Sửa thông tin hóa đơn thành công!");
+                            loadHoaDon();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không thể sửa thông tin hóa đơn. Vui lòng thử lại!");
+                        }
+                    }
+                    if (canEdit == false)
+                    {
+                        MessageBox.Show("Không thể sửa mã hóa đơn!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn hóa đơn muốn sửa.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+            }
+        }
+
     }
 }

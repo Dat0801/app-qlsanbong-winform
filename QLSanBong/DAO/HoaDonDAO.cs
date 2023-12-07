@@ -37,10 +37,10 @@ namespace QLSanBong.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD });
             return result;
         }
-        public int SuaHoaDon(int maHD, DateTime ngayTao, decimal tongTien, int maKH)
+        public int SuaHoaDon(int maHD, DateTime ngayTao, decimal tongTien, int maKH, int maSan, int TongPhut)
         {
-            string query = "SP_SuaHoaDon @MaHD , @NgayTao , @TongTien , @MaKH";
-            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, ngayTao, tongTien, maKH });
+            string query = "SP_SuaHoaDon @MaHD , @NgayTao , @TongTien , @MaKH , @MaSan , @TongPhut";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, ngayTao, tongTien, maKH, maSan, TongPhut });
             return result;
         }
         public bool CanEditMaHD(int maHD)
@@ -63,5 +63,44 @@ namespace QLSanBong.DAO
             }
         }
 
+        public List<HoaDon> getListHoaDon(int Thang, int Nam)
+        {
+            try
+            {
+                string query = "Select * from HoaDon where Month(NgayTao) = '"+ Thang +"' AND Year(NgayTao) = '" + Nam + "'";
+                List<HoaDon> listHoaDon = new List<HoaDon>();
+                DataTable data = DataProvider.Instance.ExecuteQuery(query);
+                foreach (DataRow row in data.Rows)
+                {
+                    HoaDon hoaDon = new HoaDon(row);
+                    listHoaDon.Add(hoaDon);
+                }
+                return listHoaDon;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error in getListHoaDon: {ex.Message}");
+            }
+        }
+
+        public List<HoaDon> getListHoaDon(int Nam)
+        {
+            try
+            {
+                string query = "Select * from HoaDon where Year(NgayTao) = '" + Nam + "'";
+                List<HoaDon> listHoaDon = new List<HoaDon>();
+                DataTable data = DataProvider.Instance.ExecuteQuery(query);
+                foreach (DataRow row in data.Rows)
+                {
+                    HoaDon hoaDon = new HoaDon(row);
+                    listHoaDon.Add(hoaDon);
+                }
+                return listHoaDon;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error in getListHoaDon: {ex.Message}");
+            }
+        }
     }
 }

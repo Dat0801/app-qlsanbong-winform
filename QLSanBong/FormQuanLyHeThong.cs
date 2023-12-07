@@ -67,10 +67,9 @@ namespace QLSanBong
         private void btn__Sua_Click(object sender, EventArgs e)
         {
             string UserName = "";
-
             try
             {
-                UserName = txt_TimkiemTK.Text;
+                UserName = txt_TK.Text;
             }
             catch(Exception ex)
             {
