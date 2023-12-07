@@ -1,7 +1,7 @@
-﻿CREATE DATABASE QLSANBONG
+﻿CREATE DATABASE QLSANBONG1
 GO
 
-USE QLSANBONG
+USE QLSANBONG1
 GO
 
 CREATE TABLE ACCOUNT
@@ -432,6 +432,7 @@ BEGIN
 	SELECT * FROM DICHVU
 END
 GO
+
 -- Stored Procedures SP_KiemTraTrungDichVu
 GO
 CREATE PROC SP_KiemTraTrungTenDichVu
@@ -462,6 +463,16 @@ END
 GO
 select *from dichvu
 
+go
+CREATE PROC SP_SuaDichVu1
+@MaDV int, @TenDV nvarchar(100), @Gia int
+AS
+BEGIN
+	UPDATE DICHVU
+	SET TenDV = @TenDV, DonGia = @Gia
+	WHERE DICHVU.MaDV = @MaDV
+END
+GO
 -- Stored Procedures SP_GetListHoaDon
 GO
 CREATE PROC SP_GetListHoaDon
@@ -480,7 +491,7 @@ BEGIN
 END
 
 GO
-CREATE PROC SP_SuaHoaDon
+CREATE PROC SP_SuaHoaDon5
     @MaHD INT,
     @NgayTao DATETIME,
     @TongTien DECIMAL(18, 0),
@@ -512,3 +523,38 @@ BEGIN
 
     SELECT @CanEdit AS CanEdit;
 END
+--đoạn sửa đổi thêm
+--Stored Procedures SP_TimDV
+GO
+CREATE PROC SP_TimDV
+@TenDv nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM DICHVU
+	WHERE TenDV LIKE '%' + @TenDV + '%';
+END
+GO
+select *from hoadon
+select *from CHITIETHD
+
+
+
+GO
+CREATE PROC SP_GetListCTHoaDon
+AS
+BEGIN
+	SELECT * FROM CHITIETHD
+END
+GO
+--themCTHD
+GO
+CREATE PROC SP_ThemChiTietHoaDon
+    @MaHD INT,
+    @MaDV INT,
+    @SoLuong INT
+AS
+BEGIN
+    INSERT INTO CHITIETHD(MaHD, MaDV, SoLuong)
+    VALUES (@MaHD, @MaDV, @SoLuong);
+END
+
