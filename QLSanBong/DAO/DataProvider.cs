@@ -45,7 +45,7 @@ namespace MyClass.DAO
                         }
                     }
                 }
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);    
                 da.Fill(dt);
                 connection.Close();
             }
