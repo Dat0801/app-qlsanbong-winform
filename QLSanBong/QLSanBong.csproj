@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\ChiTietHDDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\DichVuDAO.cs" />
     <Compile Include="DAO\HoaDonDAO.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="DAO\LoaiSanDAO.cs" />
     <Compile Include="DAO\SanDAO.cs" />
     <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\ChiTietHoaDon.cs" />
     <Compile Include="DTO\DichVu.cs" />
     <Compile Include="DTO\HoaDon.cs" />
     <Compile Include="DTO\KhachHang.cs" />
@@ -128,6 +130,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormQuanLyKinhDoanh.resx">
       <DependentUpon>FormQuanLyKinhDoanh.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormQuanLySan.resx">
       <DependentUpon>FormQuanLySan.cs</DependentUpon>

@@ -22,12 +22,6 @@ namespace QLSanBong
             loadHoaDon();
         }
 
-        private void loadKhachHang()
-        {
-            List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
-            dataGridView_KhachHang.DataSource = listKH;
-        }
-
         private void loadHoaDon()
         {
             List<HoaDon> listHD = HoaDonDAO.Instance.LoadListHoaDon();
@@ -160,5 +154,69 @@ namespace QLSanBong
             }
         }
 
+        private void loadKhachHang()
+        {
+            List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
+            dataGridView_DSKH.DataSource = listKH;
+        }
+
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+            string tenKhachHang = txt_TenKH.Text;
+            if (tenKhachHang == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên khách hàng");
+            }
+            else
+            {
+                string diachi = txt_DiaChi.Text;
+                string sdt = txt_SDT.Text;
+                KhachHangDAO.Instance.ThemKhachHang(tenKhachHang, diachi, sdt);
+                txt_TenKH.Clear();
+                txt_DiaChi.Clear();
+                txt_SDT.Clear();
+            }
+            loadKhachHang();
+        }
+
+        private void btnSuaKH_Click(object sender, EventArgs e)
+        {
+            string tenKhachHang = "";
+
+            try
+            {
+                tenKhachHang = txt_TenKH.Text;
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng muốn sửa!");
+            }
+            if (tenKhachHang != "")
+            {
+
+                string diachi = txt_DiaChi.Text;
+                string sdt = txt_SDT.Text;
+                int makh = int.Parse(txtMaKH.Text);
+                KhachHangDAO.Instance.SuaDanhSach(tenKhachHang, diachi, sdt, makh);
+            }
+            loadKhachHang();
+
+        }
+        private void btn_timkiem_Click(object sender, EventArgs e)
+        {
+            string tenKhachHang = txtTimKiemTenKH.Text;
+            List<KhachHang> ListKhachHang = KhachHangDAO.Instance.timKiemKhachHang(tenKhachHang);
+            dataGridView_DSKH.DataSource = ListKhachHang;
+        }
+
+        private void dataGridView_DSKH_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = dataGridView_DSKH.SelectedCells[0].RowIndex;
+            DataGridViewRow row = dataGridView_DSKH.Rows[rowIndex];
+            txt_TenKH.Text = row.Cells["TenKH"].Value.ToString();
+            txt_DiaChi.Text = row.Cells["DiaChi"].Value.ToString();
+            txt_SDT.Text = row.Cells["SDT"].Value.ToString();
+            txtMaKH.Text = row.Cells["MaKH"].Value.ToString();
+        }
     }
 }

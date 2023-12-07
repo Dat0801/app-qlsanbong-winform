@@ -32,7 +32,7 @@ namespace QLSanBong
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQLKDNhanVien));
             this.tab_QLKH = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.dataGridView_KhachHang = new System.Windows.Forms.DataGridView();
+            this.dataGridView_DSKH = new System.Windows.Forms.DataGridView();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txt_SDT = new System.Windows.Forms.TextBox();
             this.txt_DiaChi = new System.Windows.Forms.TextBox();
@@ -48,6 +48,8 @@ namespace QLSanBong
             this.txtTimKiemTenKH = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.tab_HoaDon = new System.Windows.Forms.TabPage();
+            this.txt_MaHD = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dateTimePicker_NgayBD = new System.Windows.Forms.DateTimePicker();
@@ -66,11 +68,11 @@ namespace QLSanBong
             this.lb_hoadon = new System.Windows.Forms.Label();
             this.dgv_HoaDon = new System.Windows.Forms.DataGridView();
             this.tab_QLKinhDoanh = new System.Windows.Forms.TabControl();
-            this.txt_MaHD = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtMaKH = new System.Windows.Forms.TextBox();
             this.tab_QLKH.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_KhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_DSKH)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.tab_HoaDon.SuspendLayout();
@@ -93,7 +95,7 @@ namespace QLSanBong
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.dataGridView_KhachHang);
+            this.groupBox7.Controls.Add(this.dataGridView_DSKH);
             this.groupBox7.Location = new System.Drawing.Point(25, 91);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(682, 615);
@@ -101,23 +103,26 @@ namespace QLSanBong
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Danh sách";
             // 
-            // dataGridView_KhachHang
+            // dataGridView_DSKH
             // 
-            this.dataGridView_KhachHang.AllowUserToAddRows = false;
-            this.dataGridView_KhachHang.AllowUserToDeleteRows = false;
-            this.dataGridView_KhachHang.AllowUserToResizeColumns = false;
-            this.dataGridView_KhachHang.AllowUserToResizeRows = false;
-            this.dataGridView_KhachHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView_KhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_KhachHang.Location = new System.Drawing.Point(0, 21);
-            this.dataGridView_KhachHang.Name = "dataGridView_KhachHang";
-            this.dataGridView_KhachHang.RowHeadersWidth = 51;
-            this.dataGridView_KhachHang.RowTemplate.Height = 24;
-            this.dataGridView_KhachHang.Size = new System.Drawing.Size(682, 594);
-            this.dataGridView_KhachHang.TabIndex = 4;
+            this.dataGridView_DSKH.AllowUserToAddRows = false;
+            this.dataGridView_DSKH.AllowUserToDeleteRows = false;
+            this.dataGridView_DSKH.AllowUserToResizeColumns = false;
+            this.dataGridView_DSKH.AllowUserToResizeRows = false;
+            this.dataGridView_DSKH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_DSKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_DSKH.Location = new System.Drawing.Point(0, 21);
+            this.dataGridView_DSKH.Name = "dataGridView_DSKH";
+            this.dataGridView_DSKH.RowHeadersWidth = 51;
+            this.dataGridView_DSKH.RowTemplate.Height = 24;
+            this.dataGridView_DSKH.Size = new System.Drawing.Size(682, 594);
+            this.dataGridView_DSKH.TabIndex = 4;
+            this.dataGridView_DSKH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_DSKH_Click);
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.label6);
+            this.groupBox8.Controls.Add(this.txtMaKH);
             this.groupBox8.Controls.Add(this.txt_SDT);
             this.groupBox8.Controls.Add(this.txt_DiaChi);
             this.groupBox8.Controls.Add(this.lb_SDT);
@@ -199,6 +204,7 @@ namespace QLSanBong
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
             // btnSua
             // 
@@ -211,6 +217,7 @@ namespace QLSanBong
             this.btnSua.Text = "Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSuaKH_Click);
             // 
             // groupBox9
             // 
@@ -245,6 +252,7 @@ namespace QLSanBong
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btn_timkiem_Click);
             // 
             // txtTimKiemTenKH
             // 
@@ -288,6 +296,25 @@ namespace QLSanBong
             this.tab_HoaDon.TabIndex = 2;
             this.tab_HoaDon.Text = "Hóa đơn";
             this.tab_HoaDon.UseVisualStyleBackColor = true;
+            // 
+            // txt_MaHD
+            // 
+            this.txt_MaHD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_MaHD.Location = new System.Drawing.Point(409, 126);
+            this.txt_MaHD.Name = "txt_MaHD";
+            this.txt_MaHD.ReadOnly = true;
+            this.txt_MaHD.Size = new System.Drawing.Size(178, 28);
+            this.txt_MaHD.TabIndex = 51;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(267, 126);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 20);
+            this.label14.TabIndex = 50;
+            this.label14.Text = "Mã Hóa đơn";
             // 
             // button3
             // 
@@ -478,24 +505,24 @@ namespace QLSanBong
             this.tab_QLKinhDoanh.Size = new System.Drawing.Size(1261, 760);
             this.tab_QLKinhDoanh.TabIndex = 2;
             // 
-            // txt_MaHD
+            // label6
             // 
-            this.txt_MaHD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_MaHD.Location = new System.Drawing.Point(409, 126);
-            this.txt_MaHD.Name = "txt_MaHD";
-            this.txt_MaHD.ReadOnly = true;
-            this.txt_MaHD.Size = new System.Drawing.Size(178, 28);
-            this.txt_MaHD.TabIndex = 51;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(75, 206);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 21);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "Mã KH:";
             // 
-            // label14
+            // txtMaKH
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(267, 126);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 20);
-            this.label14.TabIndex = 50;
-            this.label14.Text = "Mã Hóa đơn";
+            this.txtMaKH.Location = new System.Drawing.Point(223, 203);
+            this.txtMaKH.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.ReadOnly = true;
+            this.txtMaKH.Size = new System.Drawing.Size(209, 28);
+            this.txtMaKH.TabIndex = 66;
             // 
             // FormQLKDNhanVien
             // 
@@ -507,7 +534,7 @@ namespace QLSanBong
             this.Text = "FormQLKDNhanVien";
             this.tab_QLKH.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_KhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_DSKH)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -526,7 +553,7 @@ namespace QLSanBong
 
         private System.Windows.Forms.TabPage tab_QLKH;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.DataGridView dataGridView_KhachHang;
+        private System.Windows.Forms.DataGridView dataGridView_DSKH;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox txt_SDT;
         private System.Windows.Forms.TextBox txt_DiaChi;
@@ -562,5 +589,7 @@ namespace QLSanBong
         private System.Windows.Forms.TabControl tab_QLKinhDoanh;
         private System.Windows.Forms.TextBox txt_MaHD;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtMaKH;
     }
 }
