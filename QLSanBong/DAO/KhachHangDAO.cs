@@ -31,29 +31,5 @@ namespace QLSanBong.DAO
             }
             return listKH;
         }
-        public bool ThemKhachHang(string tenKhachHang, string diachi,  string sdt)
-        {
-            string query = "insert into KHACHHANG values ('" + tenKhachHang + "', '" + diachi + "', '" + sdt + "')";
-            DataTable result = DataProvider.Instance.ExecuteQuery(query);
-            return result.Rows.Count > 0;
-        }
-        public bool SuaDanhSach(string tenKhachHang, string diachi,  string sdt)
-        {
-            string query = "update KHACHHANG set TenKH = '" + tenKhachHang + "',DiaChi = '" + diachi + "',SDT= '" + sdt + "'where MaKH = " + tenKhachHang + "";
-            DataTable result = DataProvider.Instance.ExecuteQuery(query);
-            return result.Rows.Count > 0;
-        }
-        public List<KhachHang> timKiemKhachHang(string tenKhachHang)
-        {
-            List<KhachHang> ListKhachHang = new List<KhachHang>();
-            string query = "SELECT * FROM KHACHHANG WHERE TenKH = '" + tenKhachHang + "'";
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            foreach(DataRow row in data.Rows)
-            {
-                KhachHang khachhang = new KhachHang(row);
-                ListKhachHang.Add(khachhang);
-            }
-            return ListKhachHang;
-        }
     }
 }
