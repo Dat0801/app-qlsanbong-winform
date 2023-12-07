@@ -21,6 +21,7 @@ namespace QLSanBong
             InitializeComponent();
             loaddicvu();
             loadHoaDon();
+            loadKhachHang();
         }
 
         private void loaddicvu()
@@ -236,6 +237,31 @@ namespace QLSanBong
             }
 
         }
+        
+        private void loadKhachHang()
+        {
+            List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
+            dataGridView_DSKH.DataSource = listKH;
+        }
+
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+            string tenKhachHang = txt_TenKH.Text;
+            if (tenKhachHang == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên khách hàng");
+            }
+            else
+            {
+                string diachi = txt_DiaChi.Text;
+                string sdt = txt_SDT.Text;
+                KhachHangDAO.Instance.ThemKhachHang(tenKhachHang, diachi, sdt);
+                txt_TenKH.Clear();
+                txt_DiaChi.Clear();
+                txt_SDT.Clear();
+            }
+            loadKhachHang();
+        }
 
         private void btnSuaKH_Click(object sender, EventArgs e)
         {
@@ -254,9 +280,9 @@ namespace QLSanBong
 
                 string diachi = txt_DiaChi.Text;
                 string sdt = txt_SDT.Text;
-                //KhachHangDAO.Instance.SuaDanhSach(tenKhachHang, diachi, sdt);
+                KhachHangDAO.Instance.SuaDanhSach(tenKhachHang, diachi, sdt);
             }
-            //loadKhachHang();
+            loadKhachHang();
 
         }
         private void dataGridView_DSKH_Click(object sender, EventArgs e)
@@ -269,61 +295,9 @@ namespace QLSanBong
         }
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
-            string tenKhachHang = txt_TenKH.Text;
-            //List<KhachHang> ListKhachHang = KhachHangDAO.Instance.timKiemKhachHang(tenKhachHang);
-            //dataGridView_DSKH.DataSource = ListKhachHang;
-            try
-            {
-                if (dgv_HoaDon.SelectedCells.Count > 0)
-                {
-                    int selectedRowIndex = dgv_HoaDon.SelectedCells[0].RowIndex;
-                    DataGridViewRow selectedRow = dgv_HoaDon.Rows[selectedRowIndex];
-
-                    int maHD = Convert.ToInt32(selectedRow.Cells["MaHD"].Value);
-
-                    bool canEdit = HoaDonDAO.Instance.CanEditMaHD(maHD);
-
-                    if (canEdit == true)
-                    {
-                        DateTime ngayTao = dateTimePicker_NgayBD.Value;
-                        decimal tongTien;
-
-                        if (!decimal.TryParse(txt_Tongtien.Text, out tongTien))
-                        {
-                            MessageBox.Show("Tổng tiền không hợp lệ!");
-                            return;
-                        }
-
-                        int maKH = Convert.ToInt32(cbo_MAKH.SelectedValue);
-
-                        // Thực hiện sửa thông tin
-                        int result = HoaDonDAO.Instance.SuaHoaDon(maHD, ngayTao, tongTien, maKH);
-
-                        // Kiểm tra và hiển thị kết quả
-                        if (result > 0)
-                        {
-                            MessageBox.Show("Sửa thông tin hóa đơn thành công!");
-                            loadHoaDon();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không thể sửa thông tin hóa đơn. Vui lòng thử lại!");
-                        }
-                    }
-                    if (canEdit == false)
-                    {
-                        MessageBox.Show("Không thể sửa mã hóa đơn!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn hóa đơn muốn sửa.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
-            }
+            string tenKhachHang = txt_tkTenKH.Text;
+            List<KhachHang> ListKhachHang = KhachHangDAO.Instance.timKiemKhachHang(tenKhachHang);
+            dataGridView_DSKH.DataSource = ListKhachHang;
         }
     }
 }
