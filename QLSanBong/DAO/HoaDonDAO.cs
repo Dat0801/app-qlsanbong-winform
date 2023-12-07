@@ -43,6 +43,7 @@ namespace QLSanBong.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, ngayTao, tongTien, maKH, maSan, TongPhut });
             return result;
         }
+
         public bool CanEditMaHD(int maHD)
         {
             try
@@ -55,14 +56,13 @@ namespace QLSanBong.DAO
                     bool canEdit = Convert.ToBoolean(result.Rows[0]["CanEdit"]);
                     return canEdit;
                 }
-                return true;
+                return false; // Nếu không có dữ liệu, mặc định không thể sửa.
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error in CanEditMaHD: {ex.Message}");
             }
         }
-
         public List<HoaDon> getListHoaDon(int Thang, int Nam)
         {
             try

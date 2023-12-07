@@ -35,7 +35,7 @@ namespace QLSanBong.DAO
         public List<DichVu> TimKiemdicvu(string tenDV)
         {
             List<DichVu> ListDV = new List<DichVu>();
-            string query = "SP_SearchDichVuByName @TenDichVu";
+            string query = "SP_TimDV @TenDV";
             DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { tenDV });
             foreach (DataRow row in data.Rows)
             {
@@ -58,9 +58,10 @@ namespace QLSanBong.DAO
         }
         public int SuaDicVu(int maDV, string tenDV, int dongia)
         {
-            string query = "SP_SuaDV @MaDV, @TenDV, @DonGia";
+            string query = "SP_SuaDichVu1 @MaDV , @TenDV , @Gia";
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maDV, tenDV, dongia });
             return result;
         }
+
     }
 }

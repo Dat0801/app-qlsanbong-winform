@@ -15,6 +15,7 @@ namespace QLSanBong
 {
     public partial class FormQuanLyKinhDoanh : Form
     {
+        DichVu dv = new DichVu();
         public FormQuanLyKinhDoanh()
         {
 
@@ -22,8 +23,26 @@ namespace QLSanBong
             loaddicvu();
             loadHoaDon();
             loadKhachHang();
-        }
+            loadCTHD();
 
+        }
+        private void loadCTHD()
+        {
+            List<ChiTietHoaDon> listCTHD = ChiTietHDDAO.Instance.LoadListLoadCTHD();
+            dgv_CTHD.DataSource = listCTHD;
+            
+            
+            List<DichVu> listDV = DichVuDAO.Instance.LoadListDichVu();
+            cbo_MaDV.DataSource = listDV;
+            cbo_MaDV.DisplayMember = "TenDV";
+            cbo_MaDV.ValueMember = "MaDV";
+
+            List<HoaDon> listHD = HoaDonDAO.Instance.LoadListHoaDon();
+            cbo_MaHD.DataSource = listHD;
+            cbo_MaHD.DisplayMember = "MaHD";
+            cbo_MaHD.ValueMember = "MaHD";
+
+        }
         private void loaddicvu()
         {
             List<DichVu> listKH = DichVuDAO.Instance.LoadListDichVu();
@@ -83,6 +102,7 @@ namespace QLSanBong
             try
             {
                 row = dgv_DichVu.Rows[e.RowIndex];
+                txt_MaDV.Text = Convert.ToString(row.Cells["MaDV"].Value);
                 txt_tenDV.Text = Convert.ToString(row.Cells["TenDV"].Value);
                 txt_dongiaDV.Text = Convert.ToString(row.Cells["DonGia"].Value);
 
@@ -118,52 +138,24 @@ namespace QLSanBong
 
         private void btnSuaDV_Click(object sender, EventArgs e)
         {
-            if (dgv_DichVu.SelectedRows.Count > 0)
+            int maDV = 0;
+            try
             {
-                DichVu selectedDV = dgv_DichVu.SelectedRows[0].DataBoundItem as DichVu;
+                maDV = int.Parse(txt_MaDV.Text);
 
-                // Các thao tác khác ở đây
-                if (selectedDV != null)
-                {
-                    string tenDV = txt_tenDV.Text.Trim();
-                    if (string.IsNullOrEmpty(tenDV))
-                    {
-                        MessageBox.Show("Vui lòng chọn dịch vụ muốn sửa!");
-                        return;
-                    }
-
-                    int dongia;
-                    if (!int.TryParse(txt_dongiaDV.Text, out dongia))
-                    {
-                        MessageBox.Show("Đơn giá không hợp lệ!");
-                        return;
-                    }
-
-                    // Thực hiện sửa thông tin
-                    int result = DichVuDAO.Instance.SuaDicVu(selectedDV.MaDV, tenDV, dongia);
-
-                    // Kiểm tra và hiển thị kết quả
-                    if (result > 0)
-                    {
-                        MessageBox.Show("Sửa thông tin dịch vụ thành công!");
-                        loaddicvu();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không thể sửa thông tin dịch vụ. Vui lòng thử lại!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn dịch vụ muốn sửa!");
-                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Vui lòng chọn dịch vụ muốn sửa!");
+                MessageBox.Show("Vui lòng chọn sân muốn sửa!");
             }
-
-
+            if (maDV != 0)
+            {
+                string tenDV = txt_tenDV.Text;
+                int gia = int.Parse(txt_dongiaDV.Text);
+                DichVuDAO.Instance.SuaDicVu(maDV, tenDV, gia);
+                MessageBox.Show("Sua thanh cong");
+            }
+            loaddicvu();
 
         }
         private void loadHoaDon()
@@ -210,14 +202,24 @@ namespace QLSanBong
             try
             {
                 List<KhachHang> listKH = KhachHangDAO.Instance.LoadListKH();
-
+                List<San> listSan = SanDAO.Instance.LoadListSan();
                 cbo_MAKH.DataSource = listKH;
                 cbo_MAKH.DisplayMember = "TenKH";
                 cbo_MAKH.ValueMember = "MaKH";
+                
+                cbo_MaSan.DataSource  = listSan;
+                cbo_MaSan.DisplayMember = "TenSan";
+                cbo_MaSan.ValueMember = "MaSan";
+
+
+
                 DataGridViewRow row = dgv_HoaDon.Rows[e.RowIndex];
                 txt_MaHD.Text = Convert.ToString(row.Cells["MaHD"].Value);
                 dateTimePicker_NgayBD.Text = Convert.ToString(row.Cells["NgayTao"].Value);
                 txt_Tongtien.Text = Convert.ToString(row.Cells["TongTien"].Value);
+                txt_TongGio.Text = Convert.ToString(row.Cells["TongGio"].Value);
+                cbo_MaSan.SelectedValue = Convert.ToInt32(row.Cells["MaSan"].Value);
+                
                 int maKHFromDGV = Convert.ToInt32(row.Cells["MaKH"].Value);
                 txt_PhutDa.Text = (row.Cells["TongPhut"].Value).ToString();
                 txt_MaSan.Text = row.Cells["MaSan"].Value.ToString();
@@ -361,6 +363,107 @@ namespace QLSanBong
             dataGridView_DSKH.DataSource = ListKhachHang;
         }
 
+        private void dgv_CTHD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                DataGridViewRow row = dgv_CTHD.Rows[e.RowIndex];
+                txt_SoLuong.Text = Convert.ToString(row.Cells["SoLuong"].Value);
+                int maDV = Convert.ToInt32(row.Cells["MaDV"].Value);
+                int maHD = Convert.ToInt32(row.Cells["MaHD"].Value);
+                cbo_MaDV.SelectedValue = maDV;
+                cbo_MaHD.SelectedValue = maHD;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+            }
+
+        }
+
+        private void btn_SuaHD_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (dgv_HoaDon.SelectedCells.Count > 0)
+                {
+                    int selectedRowIndex = dgv_HoaDon.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dgv_HoaDon.Rows[selectedRowIndex];
+
+                    int maHD = Convert.ToInt32(selectedRow.Cells["MaHD"].Value);
+                    int maSan = Convert.ToInt32(selectedRow.Cells["MaSan"].Value);
+                    
+                        DateTime ngayTao = dateTimePicker_NgayBD.Value;
+                        decimal tongTien = Convert.ToInt32(txt_Tongtien.Text);
+
+                        
+
+                        int maKH = Convert.ToInt32(cbo_MAKH.SelectedIndex);
+                        int tonggio = Convert.ToInt32(txt_TongGio.Text.ToString());
+
+                        // Thực hiện sửa thông tin
+                        int result = HoaDonDAO.Instance.SuaHoaDonn(maHD, ngayTao, tongTien, maSan, maKH,tonggio);
+                    
+                    
+
+                        // Kiểm tra và hiển thị kết quả
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Sửa thông tin hóa đơn thành công!");
+                            loadHoaDon();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không thể sửa thông tin hóa đơn. Vui lòng thử lại!");
+                        }
+                    
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn hóa đơn muốn sửa.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+            }
+
+        }
+
+        private void btn_ThemCTHD_Click(object sender, EventArgs e)
+        {
+            
+                if (dgv_CTHD.SelectedCells.Count > 0)
+                {
+                    int maHD = Convert.ToInt32(cbo_MaHD.SelectedValue);
+                    int maDV = Convert.ToInt32(cbo_MaDV.SelectedValue);
+                    int soLuong = Convert.ToInt32(txt_SoLuong.Text);
+
+
+                    int result = ChiTietHDDAO.Instance.ThemCTHD(maHD, maDV, soLuong);
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Thêm chi tiết hóa đơn thành công!");
+                        // Refresh hoặc load lại danh sách chi tiết hóa đơn nếu cần
+                        loadCTHD();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể thêm chi tiết hóa đơn. Vui lòng thử lại!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn hóa đơn và dịch vụ muốn thêm chi tiết.");
+                }
+            
+           
+        }
+        
         private void btnTKThang_Click(object sender, EventArgs e)
         {
             if (cbo_Thang.SelectedItem != null && cbo_Thang_Nam.SelectedItem != null)
