@@ -12,7 +12,7 @@ namespace MyClass.DAO
     {
         private static DataProvider instance;
 
-        private string conStr = "Data Source=LAPTOP-70K25FBU;Initial Catalog=QLSANBONG;Integrated Security=True";
+        private string conStr = "Data Source=LAPTOP-70K25FBU;Initial Catalog=QLSANBONG1;Integrated Security=True";
         //private string conStr = "Data Source=DESKTOP-S0K3I3A;Initial Catalog=QLSANBONG;Integrated Security=True";
 
         public static DataProvider Instance
@@ -79,6 +79,7 @@ namespace MyClass.DAO
         }
 
         public object ExecuteScalar(string query, object[] parameter = null)
+
         {
             object data = 0;
             using (SqlConnection connection = new SqlConnection(conStr))

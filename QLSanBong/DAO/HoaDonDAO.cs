@@ -37,12 +37,13 @@ namespace QLSanBong.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD });
             return result;
         }
-        public int SuaHoaDon(int maHD, DateTime ngayTao, decimal tongTien, int maKH)
+        public int SuaHoaDonn(int maHD, DateTime ngayTao, decimal tongTien, int maSan, int maKH, int tongGio)
         {
-            string query = "SP_SuaHoaDon @MaHD , @NgayTao , @TongTien , @MaKH";
-            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, ngayTao, tongTien, maKH });
+            string query = "SP_SuaHoaDon5 @MaHD, @NgayTao, @TongTien, @MaSan, @MaKH, @TongGio";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, ngayTao, tongTien, maSan, maKH, tongGio });
             return result;
         }
+
         public bool CanEditMaHD(int maHD)
         {
             try
@@ -55,13 +56,12 @@ namespace QLSanBong.DAO
                     bool canEdit = Convert.ToBoolean(result.Rows[0]["CanEdit"]);
                     return canEdit;
                 }
-                return true;
+                return false; // Nếu không có dữ liệu, mặc định không thể sửa.
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error in CanEditMaHD: {ex.Message}");
             }
         }
-
     }
 }
