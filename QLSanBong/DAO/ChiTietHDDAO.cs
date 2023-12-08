@@ -34,9 +34,27 @@ namespace QLSanBong.DAO
         }
         public int ThemCTHD(int maHD, int maDV, int soLuong)
         {
-            string query = "EXEC SP_ThemChiTietHoaDon @MaHD , @MaDV , @SoLuong";
-            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, maDV, soLuong });
-            return result;
+            List<ChiTietHoaDon> listCTHD = LoadListLoadCTHD();
+            int flag = 0;
+            foreach (var item in listCTHD)
+            {
+                if(maHD == item.MaHD && maDV == item.MaDV)
+                {
+                    flag = 1;
+                    soLuong += item.SoLuong;
+                }
+            }
+            if(flag == 1)
+            {
+                string query = "Update ChiTietHD set SoLuong = '"+ soLuong +"' where MaHD = '" + maHD + "' and MaDV = '" + maDV + "'";
+                int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, maDV, soLuong });
+                return result;
+            } else
+            {
+                string query = "EXEC SP_ThemChiTietHoaDon @MaHD , @MaDV , @SoLuong";
+                int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, maDV, soLuong });
+                return result;
+            }
         }
 
         public int XoaCTHD(int maHD, int maDV)
@@ -45,7 +63,22 @@ namespace QLSanBong.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result;
         }
+        public int SuaCTHD(int maHD, int maDV, int soLuongMoi)
+        {
+                int resultXoa = XoaCTHD(maHD, maDV);
+                if (resultXoa > 0)
+                {
+                    // Nếu xóa thành công, thêm chi tiết hóa đơn mới với số lượng mới
+                    int resultThem = ThemCTHD(maHD, maDV, soLuongMoi);
 
+                    return resultThem;
+                }
+                else
+                {
+                    return resultXoa;
+                }
+            
+        }
         
     }
 }

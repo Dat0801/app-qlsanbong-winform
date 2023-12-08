@@ -117,21 +117,39 @@ namespace QLSanBong
 
         private void btnXoaDV_Click(object sender, EventArgs e)
         {
-            string tenDV = "";
             try
             {
-                tenDV = txt_tenDV.Text;
-            }
-            catch
-            {
-                MessageBox.Show("Vui lòng chọn dịch vụ muốn xóa!");
-            }
-            if (tenDV != "")
-            {
-                DichVuDAO.Instance.XoaDichVu(tenDV);
-                txt_tenDV.Clear();
-                txt_dongiaDV.Clear();
+                string tenDV = "";
+                try
+                {
+                    tenDV = txt_tenDV.Text;
+                }
+                catch
+                {
+                    MessageBox.Show("Vui lòng chọn dịch vụ muốn xóa!");
+                }
+                if (tenDV != "")
+                {
+                    DichVuDAO.Instance.XoaDichVu(tenDV);
+                    txt_tenDV.Clear();
+                    txt_dongiaDV.Clear();
 
+                }
+            }
+            catch 
+            {
+                int maDV = int.Parse(cbo_MaDV.SelectedValue.ToString());
+                int maHD = int.Parse(cbo_MaHD.SelectedValue.ToString());
+                int result = ChiTietHDDAO.Instance.XoaCTHD(maHD, maDV);
+                if (result > 0)
+                {
+                    MessageBox.Show("Bạn Sẽ Xóa Chi tiết Hóa đơn trước!");
+                    loaddicvu();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa chi tiết hóa đơn. Vui lòng thử lại!");
+                }
             }
             loaddicvu();
         }
@@ -447,6 +465,7 @@ namespace QLSanBong
             {
                 MessageBox.Show("Vui lòng chọn năm muốn thống kê!");
             }
+            loadHoaDon();
         }
 
         private void btn_XoaCTHD_Click(object sender, EventArgs e)
@@ -463,6 +482,55 @@ namespace QLSanBong
             {
                 MessageBox.Show("Không thể xóa chi tiết hóa đơn. Vui lòng thử lại!");
             }
+            loadHoaDon();
+        }
+ 
+        private void btn_SuaCTHD_Click(object sender, EventArgs e)
+        {
+            int maHD = 0;
+            try
+            {
+                maHD = int.Parse(cbo_MaHD.SelectedValue.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn");
+            }
+
+            if (maHD != 0)
+            {
+                int madv = 0;
+                if (int.TryParse(cbo_MaDV.SelectedValue.ToString(), out madv))
+                {
+                    int soluong = 0;
+                    if (int.TryParse(txt_SoLuong.Text, out soluong))
+                    {
+                        int result = ChiTietHDDAO.Instance.SuaCTHD(maHD, madv, soluong);
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Sửa chi tiết hóa đơn thành công!");
+                            loadCTHD();
+                        }
+                        else if (result == 0)
+                        {
+                            MessageBox.Show("Hóa đơn không tồn tại hoặc không thể sửa!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi khi sửa chi tiết hóa đơn!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Số lượng không hợp lệ.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn Mã Dịch vụ.");
+                }
+            }
+            loadHoaDon();
         }
     }
 }

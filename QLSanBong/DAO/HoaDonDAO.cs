@@ -39,7 +39,7 @@ namespace QLSanBong.DAO
         }
         public int SuaHoaDon(int maHD, DateTime ngayTao, decimal tongTien, int maKH, int maSan, int TongPhut)
         {
-            string query = "SP_SuaHoaDon @MaHD , @NgayTao , @TongTien , @MaKH , @MaSan , @TongPhut";
+            string query = "SP_SuaHoaDon5 @MaHD , @NgayTao , @TongTien , @MaKH , @MaSan , @TongPhut";
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maHD, ngayTao, tongTien, maKH, maSan, TongPhut });
             return result;
         }
