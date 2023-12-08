@@ -46,7 +46,7 @@ namespace QLSanBong.DAO
         public List<KhachHang> timKiemKhachHang(string tenKhachHang)
         {
             List<KhachHang> ListKhachHang = new List<KhachHang>();
-            string query = "SELECT * FROM KHACHHANG WHERE TenKH = '" + tenKhachHang + "'";
+            string query = "SELECT * FROM KHACHHANG WHERE TenKH Like '%" + tenKhachHang + "%'";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach(DataRow row in data.Rows)
             {

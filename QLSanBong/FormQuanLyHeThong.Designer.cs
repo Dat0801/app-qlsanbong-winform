@@ -129,6 +129,9 @@ namespace QLSanBong
             // cb_Quyen
             // 
             this.cb_Quyen.FormattingEnabled = true;
+            this.cb_Quyen.Items.AddRange(new object[] {
+            "0",
+            "1"});
             this.cb_Quyen.Location = new System.Drawing.Point(215, 330);
             this.cb_Quyen.Name = "cb_Quyen";
             this.cb_Quyen.Size = new System.Drawing.Size(210, 28);
@@ -148,7 +151,7 @@ namespace QLSanBong
             this.label1.Location = new System.Drawing.Point(66, 337);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 21);
+            this.label1.Size = new System.Drawing.Size(61, 20);
             this.label1.TabIndex = 60;
             this.label1.Text = "Quyền:";
             // 
@@ -158,7 +161,7 @@ namespace QLSanBong
             this.label2.Location = new System.Drawing.Point(66, 236);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 21);
+            this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 59;
             this.label2.Text = "Mật khẩu:";
             // 
@@ -168,7 +171,7 @@ namespace QLSanBong
             this.label3.Location = new System.Drawing.Point(66, 288);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 21);
+            this.label3.Size = new System.Drawing.Size(96, 20);
             this.label3.TabIndex = 58;
             this.label3.Text = "Tên hiển thị";
             // 
@@ -178,7 +181,7 @@ namespace QLSanBong
             this.label4.Location = new System.Drawing.Point(66, 176);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 21);
+            this.label4.Size = new System.Drawing.Size(86, 20);
             this.label4.TabIndex = 57;
             this.label4.Text = "Tài khoản:";
             // 
@@ -271,7 +274,7 @@ namespace QLSanBong
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(65, 28);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(84, 21);
+            this.label16.Size = new System.Drawing.Size(82, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "Tài khoản";
             // 
