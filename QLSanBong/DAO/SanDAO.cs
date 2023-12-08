@@ -52,6 +52,7 @@ namespace QLSanBong.DAO
 
         public int XoaSan(int maSan)
         {
+            
             string query = "SP_XoaSan @MaSan";
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maSan });
             return result;

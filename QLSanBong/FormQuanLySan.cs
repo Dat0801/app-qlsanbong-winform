@@ -88,10 +88,34 @@ namespace QLSanBong
                 r = MessageBox.Show("Bạn có chắc muốn xóa sân?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (r == DialogResult.Yes)
                 {
-                    SanDAO.Instance.XoaSan(maSan);
-                    txtMaSan.Clear();
-                    txtTenSan.Clear();
-                    cbo_LoaiSan.SelectedIndex = 0;
+                    List<LichDatSan> listLDSan = LichDatSanDAO.Instance.LoadListLoaiSan();
+                    List<HoaDon> listHD = HoaDonDAO.Instance.LoadListHoaDon();
+                    int flag = 0;
+                    foreach (var item in listLDSan)
+                    {
+                        if (maSan == item.MaSan)
+                        {
+                            flag = 1;
+                        }
+                    }
+                    foreach (var item in listHD)
+                    {
+                        if (maSan == item.MaSan)
+                        {
+                            flag = 1;
+                        }
+                    }
+                    if (flag == 1)
+                    {
+                        MessageBox.Show("Sân không thể xóa do đang có quản lý khác tham chiếu!");
+                    } else
+                    {
+                        SanDAO.Instance.XoaSan(maSan);
+                        txtMaSan.Clear();
+                        txtTenSan.Clear();
+                        cbo_LoaiSan.SelectedIndex = 0;
+                    }
+                    
                 }
             }
             loadSan();
@@ -188,10 +212,27 @@ namespace QLSanBong
                 r = MessageBox.Show("Bạn có chắc muốn xóa loại sân này?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (r == DialogResult.Yes)
                 {
-                    LoaiSanDAO.Instance.XoaLoaiSan(maLoai);
-                    txtMaLoai.Clear();
-                    txtTenLoai.Clear();
-                    txtGiaThue.Clear();
+                    List<San> listSan = SanDAO.Instance.LoadListSan();
+                    int flag = 0;
+                    foreach (var item in listSan)
+                    {
+                        if (maLoai == item.MaLoai)
+                        {
+                            flag = 1;
+                        }
+                    }
+                    if (flag == 1)
+                    {
+                        MessageBox.Show("Loại sân không thể xóa do đang có quản lý khác tham chiếu!");
+                    }
+                    else
+                    {
+                        LoaiSanDAO.Instance.XoaLoaiSan(maLoai);
+                        txtMaLoai.Clear();
+                        txtTenLoai.Clear();
+                        txtGiaThue.Clear();
+                    }
+                        
                 }
                 
             }
