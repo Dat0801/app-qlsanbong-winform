@@ -55,7 +55,7 @@ namespace QLSanBong.DAO
 
         public bool ThemTaiKhoan(string username, string password, string displayname, string role)
         {
-            string query = "insert into ACCOUNT values ('" + username + "', '" + password + "', '" + displayname + "', '" + role + "')";
+            string query = "insert into ACCOUNT values ('" + username + "', '" + password + "', N'" + displayname + "', '" + role + "')";
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }
@@ -74,7 +74,7 @@ namespace QLSanBong.DAO
         public List<Account> timkiemTaiKhoan(string username)
         {
             List<Account> ListTaiKhoan = new List<Account>();
-            string query = "SELECT * FROM Account WHERE UserName = '" + username + "'";
+            string query = "SELECT * FROM Account WHERE UserName like '%" + username + "%'";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow row in data.Rows)
             {
