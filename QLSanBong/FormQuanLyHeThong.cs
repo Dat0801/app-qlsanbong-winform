@@ -35,10 +35,15 @@ namespace QLSanBong
             }
             else
             {
-                string Password = txt_MK.Text;
-                string DisplayName = txt_tenHT.Text;
-                string Role = cb_Quyen.Text;
-                AccountDAO.Instance.ThemTaiKhoan(UserName, Password, DisplayName, Role);
+                if (AccountDAO.Instance.KiemTraTrungTaiKhoan(UserName))
+                    MessageBox.Show("Tên sân đã tồn tại!");
+                else
+                {
+                    string Password = txt_MK.Text;
+                    string DisplayName = txt_tenHT.Text;
+                    string Role = cb_Quyen.Text;
+                    AccountDAO.Instance.ThemTaiKhoan(UserName, Password, DisplayName, Role);
+                }
             }
             loadAccount();
         }

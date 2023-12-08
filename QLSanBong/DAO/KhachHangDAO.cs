@@ -31,6 +31,7 @@ namespace QLSanBong.DAO
             }
             return listKH;
         }
+
         public bool ThemKhachHang(string tenKhachHang, string diachi,  string sdt)
         {
             string query = "insert into KHACHHANG values (N'" + tenKhachHang + "', N'" + diachi + "', '" + sdt + "')";

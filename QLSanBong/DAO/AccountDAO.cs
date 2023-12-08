@@ -45,6 +45,14 @@ namespace QLSanBong.DAO
             DataRow role = result.Rows[0];
             return (int) role["Role"];
         }
+
+        public bool KiemTraTrungTaiKhoan(string username)
+        {
+            string query = "select * from ACCOUNT where UserName ='"+ username +"'";
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            return result.Rows.Count > 0;
+        }
+
         public bool ThemTaiKhoan(string username, string password, string displayname, string role)
         {
             string query = "insert into ACCOUNT values ('" + username + "', '" + password + "', '" + displayname + "', '" + role + "')";

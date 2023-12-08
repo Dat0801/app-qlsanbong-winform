@@ -110,19 +110,24 @@ namespace QLSanBong
             int flag = 0;
             DateTime TGBD = DateTime.Parse(thoiGianBD);
             DateTime TGKT = DateTime.Parse(thoiGianKT);
-            if (TGBD == TGKT)
-                flag = 1;
-            foreach (var item in listLDS)
-            {
-                if (item.MaSan == maSan && ((TGBD < item.ThoiGianBD && item.ThoiGianBD < TGKT) || (TGBD > item.ThoiGianBD && TGBD < item.ThoiGianKT)
-                    || (TGBD == item.ThoiGianBD && TGKT == item.ThoiGianKT) || (TGBD == TGKT || TGBD == item.ThoiGianBD)))
-                    flag = 1;
-            }
-            if (flag == 1)
-                MessageBox.Show("Sân đã được đặt trong thời gian trên!");
+            if (TGBD > TGKT)
+                MessageBox.Show("Vui lòng nhập ngày bắt đầu nhỏ hơn hoặc bằng ngày kết thúc!");
             else
-                LichDatSanDAO.Instance.ThemLichDatSan(thoiGianBD, thoiGianKT, maKH, maSan);
-            loadLichDatSan();
+            {
+                if (TGBD == TGKT)
+                    flag = 1;
+                foreach (var item in listLDS)
+                {
+                    if (item.MaSan == maSan && ((TGBD < item.ThoiGianBD && item.ThoiGianBD < TGKT) || (TGBD > item.ThoiGianBD && TGBD < item.ThoiGianKT)
+                        || (TGBD == item.ThoiGianBD && TGKT == item.ThoiGianKT) || (TGBD == TGKT || TGBD == item.ThoiGianBD)))
+                        flag = 1;
+                }
+                if (flag == 1)
+                    MessageBox.Show("Sân đã được đặt trong thời gian trên!");
+                else
+                    LichDatSanDAO.Instance.ThemLichDatSan(thoiGianBD, thoiGianKT, maKH, maSan);
+                loadLichDatSan();
+            }
         }
 
         private void btn_TraSan_Click(object sender, EventArgs e)
@@ -159,6 +164,7 @@ namespace QLSanBong
         {
             string thoiGianBD = dateTimePicker_NgayBD.Value.ToString();
             string thoiGianKT = dateTimePicker_NgayKT.Value.ToString();
+            
             int maLich = 0;
             try
             {
@@ -176,18 +182,23 @@ namespace QLSanBong
                 int flag = 0;
                 DateTime TGBD = DateTime.Parse(thoiGianBD);
                 DateTime TGKT = DateTime.Parse(thoiGianKT);
-                if (TGBD == TGKT)
-                    flag = 1;
-                foreach (var item in listLDS)
-                {
-                    if (item.MaLich != maLich && item.MaSan == maSan && ((TGBD < item.ThoiGianBD && item.ThoiGianBD < TGKT) || (TGBD > item.ThoiGianBD && TGBD < item.ThoiGianKT)
-                        || (TGBD == item.ThoiGianBD && TGKT == item.ThoiGianKT) || (TGBD == TGKT || TGBD == item.ThoiGianBD)))
-                        flag = 1;
-                }
-                if (flag == 1)
-                    MessageBox.Show("Sân đã được đặt trong thời gian trên!");
+                if (TGBD > TGKT)
+                    MessageBox.Show("Vui lòng nhập ngày bắt đầu nhỏ hơn hoặc bằng ngày kết thúc!");
                 else
-                    LichDatSanDAO.Instance.SuaLichDatSan(maLich, thoiGianBD, thoiGianKT, maKH, maSan);
+                {
+                    if (TGBD == TGKT)
+                        flag = 1;
+                    foreach (var item in listLDS)
+                    {
+                        if (item.MaLich != maLich && item.MaSan == maSan && ((TGBD < item.ThoiGianBD && item.ThoiGianBD < TGKT) || (TGBD > item.ThoiGianBD && TGBD < item.ThoiGianKT)
+                            || (TGBD == item.ThoiGianBD && TGKT == item.ThoiGianKT) || (TGBD == TGKT || TGBD == item.ThoiGianBD)))
+                            flag = 1;
+                    }
+                    if (flag == 1)
+                        MessageBox.Show("Sân đã được đặt trong thời gian trên!");
+                    else
+                        LichDatSanDAO.Instance.SuaLichDatSan(maLich, thoiGianBD, thoiGianKT, maKH, maSan);
+                }
             }
             loadLichDatSan();
         }
